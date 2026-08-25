@@ -48,6 +48,7 @@
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "docx": "^9.7.1",
     "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "15.5.22",
