@@ -10,6 +10,7 @@
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:init": "node scripts/init-mysql.mjs",
+    "db:seed": "node scripts/init-mysql.mjs",
     "test:auth": "npx tsx scripts/test-auth-isolation.ts",
     "test:schema": "npx tsx scripts/test-schema-migrations.ts",
     "test:dashboard": "npx tsx scripts/test-dashboard-shell.ts",
