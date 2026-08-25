@@ -21,7 +21,7 @@ export async function getOrCreateDefaultTenant() {
     // Default tenant definition compatible with LockQuote
     const newTenantData = {
       id: DEFAULT_TENANT_ID,
-      name: 'Atypikal Locksmith Services',
+      name: 'DEMO Locksmith',
       businessPhone: '+447700900077',
       businessEmail: process.env.BUSINESS_EMAIL || 'support@atypikalstudio.dev',
       logoUrl: '/lockquote-icon-lt-sq.png',

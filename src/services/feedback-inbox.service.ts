@@ -420,7 +420,7 @@ export async function getFeedbackDetail(
       secureToken: r.secureToken || '',
       sentAt: r.sentAt,
       createdAt: r.createdAt,
-      businessName: r.tenantName || 'Atypikal Locksmith Services',
+      businessName: r.tenantName || 'DEMO Locksmith',
       timeline,
       notifications: notifs.map((n: any) => ({
         id: n.id,
@@ -501,7 +501,7 @@ export async function getFeedbackDetail(
       secureToken: req.secureToken || '',
       sentAt: req.sentAt,
       createdAt: fb.createdAt,
-      businessName: tenant.name || 'Atypikal Locksmith Services',
+      businessName: tenant.name || 'DEMO Locksmith',
       timeline,
       notifications: [],
     };

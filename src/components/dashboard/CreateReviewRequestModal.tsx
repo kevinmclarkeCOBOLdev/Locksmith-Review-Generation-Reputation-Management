@@ -150,7 +150,7 @@ export function CreateReviewRequestModal({
   // Live rendered preview
   const livePreview = useMemo(() => {
     const customerName = selectedLead?.name || 'Customer Name';
-    const businessName = 'Atypikal Locksmith Services';
+    const businessName = 'DEMO Locksmith';
     const reviewLink = 'https://lockreview.atypikalstudio.dev/review/preview-token-xyz';
 
     let rawBody = '';

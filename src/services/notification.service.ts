@@ -93,7 +93,7 @@ export async function dispatchReviewRequest(
     throw new Error('Customer / Lead record associated with this review request was not found.');
   }
 
-  let tenantName = 'Atypikal Locksmith Services';
+  let tenantName = 'DEMO Locksmith';
   try {
     const tenantRecords = await db
       .select({ name: tenants.name })

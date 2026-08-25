@@ -78,7 +78,7 @@ export async function getDashboardOverviewData(tenantId: string): Promise<Dashbo
       .limit(1);
 
     const tenantInfo = tenantRecords[0] || {
-      name: 'Atypikal Locksmith Services',
+      name: 'DEMO Locksmith',
       businessEmail: 'support@atypikalstudio.dev',
       businessPhone: '+447700900077',
     };
@@ -313,7 +313,7 @@ export async function getDashboardOverviewData(tenantId: string): Promise<Dashbo
     });
 
     return {
-      tenantName: 'Atypikal Locksmith Services',
+      tenantName: 'DEMO Locksmith',
       businessEmail: 'support@atypikalstudio.dev',
       businessPhone: '+447700900077',
       metrics: {

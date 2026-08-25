@@ -3,7 +3,7 @@ import { DEFAULT_TENANT_ID, DEFAULT_SMS_REVIEW_TEMPLATE, DEFAULT_EMAIL_REVIEW_TE
 export const mockTenants = [
   {
     id: DEFAULT_TENANT_ID,
-    name: 'Atypikal Locksmith Services',
+    name: 'DEMO Locksmith',
     businessPhone: '+447700900077',
     businessEmail: 'support@atypikalstudio.dev',
     logoUrl: '/lockquote-icon-lt-sq.png',

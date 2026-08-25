@@ -316,12 +316,12 @@ async function initLockReviewMySQL() {
         \`business_email\` = VALUES(\`business_email\`);
     `, [
       defaultTenantId,
-      'Atypikal Locksmith Services',
+      'DEMO Locksmith',
       '+447700900077',
       'support@atypikalstudio.dev',
       '/lockquote-icon-lt-sq.png',
     ]);
-    console.log('  ✓ Default tenant seeded (Atypikal Locksmith Services)');
+    console.log('  ✓ Default tenant seeded (DEMO Locksmith)');
 
     // 3.2 Demo Users
     await connection.query(`

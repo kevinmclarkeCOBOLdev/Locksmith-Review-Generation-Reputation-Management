@@ -37,7 +37,7 @@ export default async function HomePage() {
 
           <div className="flex items-center gap-4">
             <Link
-              href="http://localhost:3000"
+              href="https://lockquote.atypikalstudio.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white transition-colors"

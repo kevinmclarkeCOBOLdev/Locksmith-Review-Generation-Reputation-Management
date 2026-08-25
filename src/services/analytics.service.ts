@@ -78,7 +78,7 @@ export async function getReputationAnalytics(
   const startDate = calculateStartDate(timeRange);
 
   // 1. Resolve business name
-  let businessName = 'Atypikal Locksmith Services';
+  let businessName = 'DEMO Locksmith';
   try {
     const tenantRecords = await db
       .select({ name: tenants.name })

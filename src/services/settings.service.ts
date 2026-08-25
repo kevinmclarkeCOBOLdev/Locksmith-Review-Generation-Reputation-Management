@@ -65,7 +65,7 @@ function validateDestinationUrl(url: string): boolean {
 export async function getTenantReputationSettings(
   tenantId: string
 ): Promise<TenantReputationSettingsResult> {
-  let tenantName = 'Atypikal Locksmith Services';
+  let tenantName = 'DEMO Locksmith';
 
   // 1. Resolve business name
   try {

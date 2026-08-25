@@ -36,7 +36,7 @@ export function CustomerReviewForm({ initialData, token }: CustomerReviewFormPro
     message?: string;
   } | null>(null);
 
-  const businessName = initialData.businessName || 'Atypikal Locksmith Services';
+  const businessName = initialData.businessName || 'DEMO Locksmith';
   const customerName = initialData.customerFirstName;
   const status = initialData.status;
 

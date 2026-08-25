@@ -15,7 +15,7 @@ interface PublicReviewPageProps {
 export default async function PublicCustomerReviewPage({ params }: PublicReviewPageProps) {
   const { token } = await params;
   const initialData = await validateReviewToken(token);
-  const businessName = initialData.businessName || 'Atypikal Locksmith Services';
+  const businessName = initialData.businessName || 'DEMO Locksmith';
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-slate-100 dark:bg-[#141414] text-slate-900 dark:text-neutral-100 font-sans p-4 sm:p-6 transition-colors duration-200">

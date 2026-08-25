@@ -82,7 +82,7 @@ export async function validateReviewToken(token: string): Promise<PublicReviewVi
   }
 
   // 2. Resolve Tenant Branding
-  let businessName = 'Atypikal Locksmith Services';
+  let businessName = 'DEMO Locksmith';
   let businessPhone: string | undefined;
   let logoUrl: string | null = null;
 
@@ -332,7 +332,7 @@ export async function submitPublicRating(
     success: true,
     sentiment,
     rating,
-    businessName: validation.businessName || 'Atypikal Locksmith Services',
+    businessName: validation.businessName || 'DEMO Locksmith',
     customerFirstName: validation.customerFirstName,
     message: sentiment === 'positive'
       ? 'Thank you for your 5-star feedback!'
@@ -385,7 +385,7 @@ export async function getPublicPlatformDestinations(token: string): Promise<Publ
     );
   }
 
-  const businessName = validation.businessName || 'Atypikal Locksmith Services';
+  const businessName = validation.businessName || 'DEMO Locksmith';
   const platforms: ReviewPlatformDestination[] = [];
 
   // 1. Fetch enabled platforms from database

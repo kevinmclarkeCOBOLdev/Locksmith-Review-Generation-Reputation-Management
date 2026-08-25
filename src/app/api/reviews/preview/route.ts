@@ -8,7 +8,7 @@ const previewSchema = z.object({
   templateBody: z.string().min(1, 'Template body is required'),
   subject: z.string().optional().nullable(),
   customerName: z.string().optional().default('James Walker'),
-  businessName: z.string().optional().default('Atypikal Locksmith Services'),
+  businessName: z.string().optional().default('DEMO Locksmith'),
   reviewLink: z.string().optional().default('https://lockreview.atypikalstudio.dev/review/demo-preview-token'),
 });
 

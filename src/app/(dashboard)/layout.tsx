@@ -139,7 +139,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </span>
             </div>
             <SidebarLink
-              href="http://localhost:3000"
+              href="https://lockquote.atypikalstudio.dev"
               icon={<ExternalLink size={18} />}
               target="_blank"
               rel="noopener noreferrer"
