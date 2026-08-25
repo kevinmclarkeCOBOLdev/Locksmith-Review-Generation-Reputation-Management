@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Lock, Mail, AlertCircle, CheckCircle2, Shield } from 'lucide-react';
+import { Lock, Mail, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 
@@ -28,13 +28,12 @@ export function LoginForm() {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: 'support@atypikalstudio.dev',
-      password: 'MockPassword123!',
+      email: '',
+      password: '',
     },
   });
 
@@ -53,7 +52,7 @@ export function LoginForm() {
       const result = await res.json();
 
       if (!res.ok || !result.success) {
-        setServerError(result.error || 'Authentication failed. Please check your credentials.');
+        setServerError(result.error || 'Invalid email or password.');
         setIsLoading(false);
         return;
       }
@@ -65,12 +64,6 @@ export function LoginForm() {
       setServerError(err.message || 'A network error occurred. Please try again.');
       setIsLoading(false);
     }
-  };
-
-  const handleFillDemo = () => {
-    setValue('email', 'support@atypikalstudio.dev');
-    setValue('password', 'MockPassword123!');
-    setServerError(null);
   };
 
   return (
@@ -97,7 +90,7 @@ export function LoginForm() {
           <div className="relative">
             <Input
               type="email"
-              placeholder="e.g. admin@atypikallocksmiths.com"
+              placeholder="e.g. user@yourdomain.com"
               {...register('email')}
               error={errors.email?.message}
               disabled={isLoading}
@@ -128,21 +121,6 @@ export function LoginForm() {
           Sign In to LockReview
         </Button>
       </form>
-
-      {/* Demo Credentials Quick Helper */}
-      <div className="pt-4 border-t border-slate-200 dark:border-[#2e2e2e] flex flex-col items-center gap-2">
-        <button
-          type="button"
-          onClick={handleFillDemo}
-          className="text-xs font-semibold text-[#E76A0E] hover:underline cursor-pointer flex items-center gap-1.5"
-        >
-          <Shield size={13} />
-          Use Default LockQuote Demo Credentials
-        </button>
-        <span className="text-[11px] text-slate-400 dark:text-neutral-500 text-center">
-          Shared MySQL identity with LockQuote ecosystem
-        </span>
-      </div>
     </div>
   );
 }

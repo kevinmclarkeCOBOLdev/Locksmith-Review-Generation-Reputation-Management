@@ -58,7 +58,7 @@ function SidebarLink({ href, icon, children, target, rel, badge }: SidebarLinkPr
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const [tenantName, setTenantName] = useState<string>('Atypikal Locksmiths');
+  const [tenantName, setTenantName] = useState<string>('DEMO Locksmith');
   const [userEmail, setUserEmail] = useState<string>('support@atypikalstudio.dev');
 
   useEffect(() => {

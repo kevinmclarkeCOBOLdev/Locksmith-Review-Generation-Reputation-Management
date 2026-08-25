@@ -71,6 +71,12 @@ async function runAuthIsolationTests() {
   const badUser = await validateUserCredentials('support@atypikalstudio.dev', 'WrongPassword!');
   assert(badUser === null, 'Incorrect password is appropriately rejected');
 
+  const randomUser = await validateUserCredentials('random@unknown.com', 'password');
+  assert(randomUser === null, 'Random unauthenticated email is strictly rejected');
+
+  const randomAdmin = await validateUserCredentials('admin@randomdomain.com', 'password');
+  assert(randomAdmin === null, 'Random admin domain email is strictly rejected');
+
   // Test 4: Cross-Tenant Isolation & Business Identifier Manipulation
   console.log('\n--- Test 4: Cross-Tenant Isolation & Business ID Tamper Defense ---');
   const tenantA_User = {

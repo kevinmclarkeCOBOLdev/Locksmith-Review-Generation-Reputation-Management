@@ -85,7 +85,7 @@ async function runTests() {
     const nodemailerProvider = new NodemailerProvider();
     const smtpResult = await nodemailerProvider.sendEmail({
       to: 'customer@example.com',
-      subject: 'Review request from Atypikal Locksmiths',
+      subject: 'Review request from DEMO Locksmith',
       html: '<p>Thank you for choosing our team.</p>',
     });
     assert(smtpResult.success === true, 'Nodemailer sendEmail returns success');
