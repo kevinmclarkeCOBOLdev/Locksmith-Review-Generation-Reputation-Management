@@ -1,10 +1,11 @@
 import { db } from '@/db';
-import { leads, tenants, auditLogs } from '@/db/schema';
+import { leads, auditLogs } from '@/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
 import { createReviewRequest, checkDuplicateRequest } from './review.service';
 import { dispatchReviewRequest } from './notification.service';
 import { generateSecureToken } from '@/lib/crypto';
-import { mockLeads, mockTenants, mockAuditLogs } from '@/db/mock';
+import { DEFAULT_TENANT_ID } from '@/db/constants';
+import { mockLeads, mockAuditLogs } from '@/db/mock';
 import type { DeliveryChannel } from '@/types/review';
 
 export interface LeadEligibilityDecision {
@@ -128,43 +129,32 @@ export async function processCompletedJobAutomations(
   let totalSkipped = 0;
   let totalFailed = 0;
 
-  // 1. Resolve tenants to process
-  let tenantIds: string[] = [];
-  if (targetTenantId) {
-    tenantIds = [targetTenantId];
-  } else {
-    try {
-      const activeTenants = await db.select({ id: tenants.id }).from(tenants);
-      tenantIds = activeTenants.map((t: any) => t.id);
-    } catch (_) {
-      tenantIds = Array.from(new Set(mockTenants.map((t: any) => t.id)));
-    }
-  }
+  // 1. Single Tenant Context
+  const tenantId = targetTenantId || DEFAULT_TENANT_ID;
 
-  // 2. For each tenant, query completed leads
-  for (const tenantId of tenantIds) {
-    let completedLeads: any[] = [];
-    try {
-      completedLeads = await db
-        .select()
-        .from(leads)
-        .where(and(eq(leads.tenantId, tenantId), eq(leads.status, 'completed')))
-        .orderBy(desc(leads.createdAt))
-        .limit(50);
+  // 2. Query completed leads for this single tenant
+  let completedLeads: any[] = [];
+  try {
+    completedLeads = await db
+      .select()
+      .from(leads)
+      .where(and(eq(leads.tenantId, tenantId), eq(leads.status, 'completed')))
+      .orderBy(desc(leads.createdAt))
+      .limit(50);
 
-      if (
-        completedLeads.length === 0 &&
-        mockLeads.some((l: any) => l.tenantId === tenantId && l.status === 'completed')
-      ) {
-        completedLeads = mockLeads.filter(
-          (l: any) => l.tenantId === tenantId && l.status === 'completed'
-        );
-      }
-    } catch (_) {
+    if (
+      completedLeads.length === 0 &&
+      mockLeads.some((l: any) => l.tenantId === tenantId && l.status === 'completed')
+    ) {
       completedLeads = mockLeads.filter(
         (l: any) => l.tenantId === tenantId && l.status === 'completed'
       );
     }
+  } catch (_) {
+    completedLeads = mockLeads.filter(
+      (l: any) => l.tenantId === tenantId && l.status === 'completed'
+    );
+  }
 
     for (const lead of completedLeads) {
       const decision = await evaluateLeadReviewEligibility(tenantId, lead.id);
@@ -248,7 +238,6 @@ export async function processCompletedJobAutomations(
         });
       }
     }
-  }
 
   return {
     success: true,

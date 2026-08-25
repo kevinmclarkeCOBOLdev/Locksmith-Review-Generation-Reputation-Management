@@ -1,6 +1,7 @@
 import { DEFAULT_TENANT_ID, DEFAULT_SMS_REVIEW_TEMPLATE, DEFAULT_EMAIL_REVIEW_TEMPLATE, DEFAULT_REVIEW_PLATFORMS } from './constants';
+import type { Tenant, User } from '@/types/auth';
 
-export const mockTenants = [
+export const mockTenants: Tenant[] = [
   {
     id: DEFAULT_TENANT_ID,
     name: 'DEMO Locksmith',
@@ -8,18 +9,10 @@ export const mockTenants = [
     businessEmail: 'support@atypikalstudio.dev',
     logoUrl: '/lockquote-icon-lt-sq.png',
     createdAt: new Date(),
-  },
-  {
-    id: '22222222-2222-2222-2222-222222222222',
-    name: 'Metro 24/7 Locksmiths',
-    businessPhone: '+447700900088',
-    businessEmail: 'admin@metrolocksmiths.co.uk',
-    logoUrl: null,
-    createdAt: new Date(),
   }
 ];
 
-export const mockUsers = [
+export const mockUsers: User[] = [
   {
     id: '11111111-1111-1111-1111-111111111111',
     tenantId: DEFAULT_TENANT_ID,
@@ -30,12 +23,6 @@ export const mockUsers = [
     id: '11111111-1111-1111-1111-111111111112',
     tenantId: DEFAULT_TENANT_ID,
     email: 'admin@yoursite.com',
-    password: 'password',
-  },
-  {
-    id: '22222222-2222-2222-2222-222222222221',
-    tenantId: '22222222-2222-2222-2222-222222222222',
-    email: 'admin@metrolocksmiths.co.uk',
     password: 'password',
   }
 ];
@@ -79,19 +66,6 @@ export const mockLeads = [
     urgency: 'Flexible',
     status: 'booked',
     createdAt: new Date(Date.now() - 3600000 * 24 * 1),
-  },
-  {
-    id: 'lead-other-tenant',
-    tenantId: '22222222-2222-2222-2222-222222222222',
-    name: 'Isolated Customer',
-    phone: '+447999999999',
-    email: 'isolated@example.com',
-    postcode: 'M1 1AE',
-    serviceType: 'Key Duplication',
-    propertyType: 'Office',
-    urgency: 'Same Day',
-    status: 'completed',
-    createdAt: new Date(),
   }
 ];
 

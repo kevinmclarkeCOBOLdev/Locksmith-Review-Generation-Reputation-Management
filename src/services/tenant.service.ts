@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { verifyJWT } from '@/lib/jwt';
 import { getTenantById } from '@/db/helpers';
+import { DEFAULT_TENANT_ID } from '@/db/constants';
 import { securityEventService, SecurityEventType, SecurityEventSeverity, SecurityEventCategory } from './security.service';
 import type { TenantContext } from '@/types/auth';
 
@@ -12,14 +13,14 @@ export class UnauthorizedError extends Error {
 }
 
 export class ForbiddenError extends Error {
-  constructor(message: string = 'Access denied: cross-tenant authorization failure') {
+  constructor(message: string = 'Access denied: invalid authorization') {
     super(message);
     this.name = 'ForbiddenError';
   }
 }
 
 /**
- * Authoritative Server-Side Tenant Resolution
+ * Authoritative Server-Side Single-Tenant Resolution
  * 
  * Pipeline:
  * Extract Session Cookie -> Verify JWT HMAC Signature -> Validate Tenant Existence in Shared DB -> Return Immutable TenantContext
@@ -56,19 +57,21 @@ export async function resolveAuthenticatedTenantContext(req?: Request): Promise<
 
   // 2. Cryptographically verify JWT session
   const session = await verifyJWT(sessionToken);
-  if (!session || !session.tenantId || !session.userId) {
+  if (!session || !session.userId) {
     throw new UnauthorizedError('Invalid or expired session. Please log in again.');
   }
 
-  // 3. Resolve tenant details from shared MySQL persistence
-  const tenant = await getTenantById(session.tenantId);
+  const tenantId = session.tenantId || DEFAULT_TENANT_ID;
+
+  // 3. Resolve single tenant details from shared MySQL persistence
+  const tenant = await getTenantById(tenantId);
   if (!tenant) {
-    throw new ForbiddenError(`Tenant account (${session.tenantId}) could not be resolved.`);
+    throw new ForbiddenError(`Tenant account (${tenantId}) could not be resolved.`);
   }
 
   return {
     userId: session.userId,
-    tenantId: session.tenantId,
+    tenantId,
     email: session.email,
     role: session.role || 'admin',
     tenant: {
@@ -83,8 +86,7 @@ export async function resolveAuthenticatedTenantContext(req?: Request): Promise<
 }
 
 /**
- * Validates that an incoming requested tenant ID strictly matches the verified session tenant ID.
- * If a mismatch is detected, logs a security alert and throws ForbiddenError.
+ * Validates that an incoming requested tenant ID matches the single tenant context.
  */
 export async function validateTenantScope(
   context: TenantContext,
@@ -98,7 +100,7 @@ export async function validateTenantScope(
       eventType: SecurityEventType.TENANT_TAMPER_DETECTED,
       severity: SecurityEventSeverity.CRITICAL,
       category: SecurityEventCategory.ACCESS_CONTROL,
-      description: `Cross-tenant access attempt blocked: user (${context.email}) belonging to tenant (${context.tenantId}) attempted to access tenant (${requestedTenantId})`,
+      description: `Tenant access mismatch: user (${context.email}) with tenant (${context.tenantId}) requested (${requestedTenantId})`,
       userId: context.userId,
       username: context.email,
       tenantId: context.tenantId,
@@ -109,6 +111,6 @@ export async function validateTenantScope(
       },
     });
 
-    throw new ForbiddenError('Unauthorized: Cross-tenant operations are strictly forbidden.');
+    throw new ForbiddenError('Unauthorized: Tenant mismatch in single-tenant deployment.');
   }
 }
