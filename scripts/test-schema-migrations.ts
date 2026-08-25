@@ -94,6 +94,11 @@ async function runSchemaMigrationTests() {
   assert(renderedSms.includes('Atypikal Locksmiths'), 'Rendered SMS contains business name');
   assert(renderedSms.includes('https://lockreview.atypikalstudio.dev/review/tok_12345'), 'Rendered SMS contains secure review link');
 
+  const renderedEmail = interpolateTemplate(DEFAULT_EMAIL_REVIEW_TEMPLATE, sampleVars);
+  assert(renderedEmail.includes('John Smith'), 'Rendered Email contains customer name');
+  assert(renderedEmail.includes('Atypikal Locksmiths'), 'Rendered Email contains business name');
+  assert(renderedEmail.includes('https://lockreview.atypikalstudio.dev/review/tok_12345'), 'Rendered Email contains secure review link');
+
   // Test 5: Secure Token Generation & Hashing
   console.log('\n--- Test 5: Cryptographic Token Generation ---');
   const token1 = generateSecureToken(32);

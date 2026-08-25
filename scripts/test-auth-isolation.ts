@@ -11,7 +11,7 @@
  */
 
 import { signJWT, verifyJWT, validateUserCredentials } from '../src/services/auth.service';
-import { securityEventService, SecurityEventType } from '../src/services/security.service';
+import { securityEventService } from '../src/services/security.service';
 import { DEFAULT_TENANT_ID } from '../src/db/constants';
 
 let passedTests = 0;
@@ -92,7 +92,7 @@ async function runAuthIsolationTests() {
   let tamperBlocked = false;
   try {
     enforceTenantScope(tenantA_User, attackerSuppliedTenantId);
-  } catch (err) {
+  } catch (_err) {
     tamperBlocked = true;
   }
   assert(tamperBlocked, 'Server-side tenant resolution blocks attacker spoofing another business_id');

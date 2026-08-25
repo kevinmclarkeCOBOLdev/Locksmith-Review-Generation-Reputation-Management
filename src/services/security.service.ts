@@ -90,7 +90,7 @@ export const securityEventService = {
 
       try {
         await db.insert(securityEvents).values(eventRecord);
-      } catch (dbErr) {
+      } catch (_dbErr) {
         mockSecurityEvents.push(eventRecord);
       }
     } catch (err) {
