@@ -47,14 +47,17 @@ export async function getOrCreateDefaultTenant() {
   }
 }
 
-export async function getTenantById(tenantId: string) {
+export async function getTenantById(tenantId?: string) {
   try {
-    const res = await db.select().from(tenants).where(eq(tenants.id, tenantId));
-    if (res && res.length > 0) return res[0];
-    const mock = mockTenants.find((t) => t.id === tenantId);
-    return mock || null;
+    if (tenantId) {
+      const res = await db.select().from(tenants).where(eq(tenants.id, tenantId)).limit(1);
+      if (res && res.length > 0) return res[0];
+    }
+    const anyTenant = await db.select().from(tenants).limit(1);
+    if (anyTenant && anyTenant.length > 0) return anyTenant[0];
+    return mockTenants[0] || null;
   } catch (err) {
     console.warn('[DB] getTenantById fallback to mock:', err);
-    return mockTenants.find((t) => t.id === tenantId) || null;
+    return mockTenants[0] || null;
   }
 }

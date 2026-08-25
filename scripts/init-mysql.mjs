@@ -304,7 +304,7 @@ async function initLockReviewMySQL() {
     console.log('  ✓ review_templates table verified');
 
     console.log('\n--- 3. Seeding Authoritative Demo & Default Data ---');
-    const defaultTenantId = '00000000-0000-0000-0000-000000000001';
+    const defaultTenantId = process.env.DEFAULT_TENANT_ID || '00000000-0000-0000-0000-000000000000';
 
     // 3.1 Default Tenant
     await connection.query(`

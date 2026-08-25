@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { reviewFeedback, reviewRequests, leads, tenants, notifications } from '@/db/schema';
-import { eq, and, desc, sql } from 'drizzle-orm';
+import { eq, and, desc, sql, or } from 'drizzle-orm';
+import { DEFAULT_TENANT_ID } from '@/db/constants';
 import { mockReviewFeedback, mockReviewRequests, mockLeads, mockTenants } from '@/db/mock';
 import type { ReviewSentiment, DeliveryChannel, ReviewRequestStatus } from '@/types/review';
 
@@ -25,9 +26,9 @@ export interface FeedbackInboxItem {
   serviceType: string;
   rating: number;
   sentiment: ReviewSentiment;
-  feedbackText: string | null;
+  feedbackText?: string | null;
   publicPlatformClicked: boolean;
-  publicPlatformName: string | null;
+  publicPlatformName?: string | null;
   channel: DeliveryChannel;
   requestStatus: ReviewRequestStatus;
   sentAt?: Date | string | null;
@@ -83,7 +84,13 @@ export async function getFeedbackInbox(
   const offset = (page - 1) * limit;
 
   try {
-    const conditions = [eq(reviewFeedback.tenantId, tenantId)];
+    const targetTenantId = tenantId || DEFAULT_TENANT_ID;
+    const conditions = [
+      or(
+        eq(reviewFeedback.tenantId, targetTenantId),
+        eq(reviewFeedback.tenantId, DEFAULT_TENANT_ID)
+      )!
+    ];
 
     if (options.sentiment && options.sentiment !== 'all') {
       conditions.push(eq(reviewFeedback.sentiment, options.sentiment));
@@ -131,7 +138,6 @@ export async function getFeedbackInbox(
       .limit(limit)
       .offset(offset);
 
-    // If query returns empty and mock array has items, trigger fallback
     if ((!records || records.length === 0) && mockReviewFeedback.some((f) => f.tenantId === tenantId)) {
       throw new Error('FallbackToMockFeedback');
     }
@@ -152,7 +158,12 @@ export async function getFeedbackInbox(
         publicPlatformClicked: reviewFeedback.publicPlatformClicked,
       })
       .from(reviewFeedback)
-      .where(eq(reviewFeedback.tenantId, tenantId));
+      .where(
+        or(
+          eq(reviewFeedback.tenantId, targetTenantId),
+          eq(reviewFeedback.tenantId, DEFAULT_TENANT_ID)
+        )
+      );
 
     const totalFeedback = allTenantFeedback.length;
     const positiveCount = allTenantFeedback.filter((f: any) => f.sentiment === 'positive').length;
@@ -332,8 +343,12 @@ export async function getFeedbackDetail(
       .from(reviewFeedback)
       .leftJoin(reviewRequests, eq(reviewFeedback.reviewRequestId, reviewRequests.id))
       .leftJoin(leads, eq(reviewRequests.leadId, leads.id))
-      .leftJoin(tenants, eq(reviewFeedback.tenantId, tenants.id))
-      .where(and(eq(reviewFeedback.id, feedbackId), eq(reviewFeedback.tenantId, tenantId)))
+      .where(
+        and(
+          eq(reviewFeedback.id, feedbackId),
+          or(eq(reviewFeedback.tenantId, tenantId), eq(reviewFeedback.tenantId, DEFAULT_TENANT_ID))!
+        )
+      )
       .limit(1);
 
     if (!records || records.length === 0) {

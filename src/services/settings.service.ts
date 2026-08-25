@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { reviewPlatformSettings, reviewTemplates, tenants, auditLogs } from '@/db/schema';
-import { eq, and } from 'drizzle-orm';
+import { eq, and, or } from 'drizzle-orm';
+import { DEFAULT_TENANT_ID } from '@/db/constants';
 import { generateSecureToken } from '@/lib/crypto';
 import { mockReviewPlatformSettings, mockReviewTemplates, mockTenants, mockAuditLogs } from '@/db/mock';
 import type { DeliveryChannel } from '@/types/review';
@@ -66,23 +67,24 @@ export async function getTenantReputationSettings(
   tenantId: string
 ): Promise<TenantReputationSettingsResult> {
   let tenantName = 'DEMO Locksmith';
+  const targetTenantId = tenantId || DEFAULT_TENANT_ID;
 
   // 1. Resolve business name
   try {
     const tenantRecords = await db
       .select({ name: tenants.name })
       .from(tenants)
-      .where(eq(tenants.id, tenantId))
+      .where(eq(tenants.id, targetTenantId))
       .limit(1);
 
     if (tenantRecords && tenantRecords.length > 0) {
       tenantName = tenantRecords[0].name;
     } else {
-      const mockT = mockTenants.find((t: any) => t.id === tenantId);
+      const mockT = mockTenants.find((t: any) => t.id === targetTenantId);
       if (mockT) tenantName = mockT.name;
     }
   } catch (_) {
-    const mockT = mockTenants.find((t: any) => t.id === tenantId);
+    const mockT = mockTenants.find((t: any) => t.id === targetTenantId);
     if (mockT) tenantName = mockT.name;
   }
 
@@ -92,9 +94,14 @@ export async function getTenantReputationSettings(
     dbPlatforms = await db
       .select()
       .from(reviewPlatformSettings)
-      .where(eq(reviewPlatformSettings.tenantId, tenantId));
+      .where(
+        or(
+          eq(reviewPlatformSettings.tenantId, targetTenantId),
+          eq(reviewPlatformSettings.tenantId, DEFAULT_TENANT_ID)
+        )
+      );
   } catch (_) {
-    dbPlatforms = mockReviewPlatformSettings.filter((p: any) => p.tenantId === tenantId);
+    dbPlatforms = mockReviewPlatformSettings.filter((p: any) => p.tenantId === targetTenantId);
   }
 
   if (dbPlatforms.length === 0) {

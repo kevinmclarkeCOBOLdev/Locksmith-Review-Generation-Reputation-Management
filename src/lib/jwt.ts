@@ -24,7 +24,7 @@ export async function signJWT(payload: Partial<AuthenticatedSession>): Promise<s
     const sessionBody: AuthenticatedSession = {
       id: payload.id || payload.userId || 'session-user',
       userId: payload.userId || payload.id || 'session-user',
-      tenantId: payload.tenantId || '00000000-0000-0000-0000-000000000001',
+      tenantId: payload.tenantId || '00000000-0000-0000-0000-000000000000',
       email: payload.email || 'user@example.com',
       role: payload.role || 'admin',
       exp: Date.now() + 24 * 60 * 60 * 1000, // 24 hours

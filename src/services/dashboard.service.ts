@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { reviewRequests, reviewFeedback, leads, tenants } from '@/db/schema';
-import { eq, desc } from 'drizzle-orm';
+import { eq, desc, or } from 'drizzle-orm';
+import { DEFAULT_TENANT_ID } from '@/db/constants';
 import { mockReviewRequests, mockReviewFeedback, mockLeads } from '@/db/mock';
 
 export interface DashboardMetrics {
@@ -32,9 +33,9 @@ export interface RecentReviewRequestItem {
   email: string;
   channel: string;
   status: string;
-  rating: number | null;
+  rating?: number | null;
   secureToken: string;
-  sentAt: Date | string | null;
+  sentAt?: Date | string | null;
   createdAt: Date | string;
 }
 
@@ -45,16 +46,16 @@ export interface RecentFeedbackItem {
   serviceType: string;
   rating: number;
   sentiment: 'positive' | 'negative';
-  feedbackText: string | null;
+  feedbackText?: string | null;
   publicPlatformClicked: boolean;
-  publicPlatformName: string | null;
+  publicPlatformName?: string | null;
   createdAt: Date | string;
 }
 
 export interface DashboardOverviewData {
   tenantName: string;
-  businessEmail?: string | null;
-  businessPhone?: string | null;
+  businessEmail: string;
+  businessPhone: string;
   metrics: DashboardMetrics;
   recentRequests: RecentReviewRequestItem[];
   recentFeedback: RecentFeedbackItem[];
@@ -66,16 +67,35 @@ export interface DashboardOverviewData {
  */
 export async function getDashboardOverviewData(tenantId: string): Promise<DashboardOverviewData> {
   try {
+    let targetTenantId = tenantId || DEFAULT_TENANT_ID;
+
     // 1. Fetch tenant business branding details
-    const tenantRecords = await db
+    let tenantRecords = await db
       .select({
+        id: tenants.id,
         name: tenants.name,
         businessEmail: tenants.businessEmail,
         businessPhone: tenants.businessPhone,
       })
       .from(tenants)
-      .where(eq(tenants.id, tenantId))
+      .where(eq(tenants.id, targetTenantId))
       .limit(1);
+
+    if (!tenantRecords || tenantRecords.length === 0) {
+      tenantRecords = await db
+        .select({
+          id: tenants.id,
+          name: tenants.name,
+          businessEmail: tenants.businessEmail,
+          businessPhone: tenants.businessPhone,
+        })
+        .from(tenants)
+        .limit(1);
+    }
+
+    if (tenantRecords && tenantRecords.length > 0 && tenantRecords[0].id) {
+      targetTenantId = tenantRecords[0].id;
+    }
 
     const tenantInfo = tenantRecords[0] || {
       name: 'DEMO Locksmith',
@@ -102,7 +122,13 @@ export async function getDashboardOverviewData(tenantId: string): Promise<Dashbo
       })
       .from(reviewRequests)
       .leftJoin(leads, eq(reviewRequests.leadId, leads.id))
-      .where(eq(reviewRequests.tenantId, tenantId))
+      .where(
+        or(
+          eq(reviewRequests.tenantId, targetTenantId),
+          eq(reviewRequests.tenantId, tenantId || targetTenantId),
+          eq(reviewRequests.tenantId, DEFAULT_TENANT_ID)
+        )
+      )
       .orderBy(desc(reviewRequests.createdAt));
 
     // 3. Fetch all feedback records for this tenant
@@ -119,7 +145,13 @@ export async function getDashboardOverviewData(tenantId: string): Promise<Dashbo
         createdAt: reviewFeedback.createdAt,
       })
       .from(reviewFeedback)
-      .where(eq(reviewFeedback.tenantId, tenantId))
+      .where(
+        or(
+          eq(reviewFeedback.tenantId, targetTenantId),
+          eq(reviewFeedback.tenantId, tenantId || targetTenantId),
+          eq(reviewFeedback.tenantId, DEFAULT_TENANT_ID)
+        )
+      )
       .orderBy(desc(reviewFeedback.createdAt));
 
     // 4. Calculate deterministic evidence-based metrics

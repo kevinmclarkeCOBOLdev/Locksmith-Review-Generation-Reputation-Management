@@ -1,5 +1,5 @@
 import { db } from '@/db';
-import { users } from '@/db/schema';
+import { users, tenants } from '@/db/schema';
 import { eq, and } from 'drizzle-orm';
 import { DEFAULT_TENANT_ID } from '@/db/constants';
 import { mockUsers } from '@/db/mock';
@@ -19,7 +19,7 @@ export async function validateUserCredentials(email: string, password: string): 
       const u = userList[0];
       return {
         id: u.id,
-        tenantId: u.tenantId,
+        tenantId: u.tenantId || DEFAULT_TENANT_ID,
         email: u.email,
         role: 'admin',
       };
@@ -28,18 +28,27 @@ export async function validateUserCredentials(email: string, password: string): 
     console.warn('[AuthService] MySQL query fallback to mock users:', dbErr);
   }
 
-  // 2. Check Mock / Demo credentials fallback
+  // 2. Resolve authoritative single tenant ID from database
+  let activeTenantId = DEFAULT_TENANT_ID;
+  try {
+    const activeTenants = await db.select({ id: tenants.id }).from(tenants).limit(1);
+    if (activeTenants && activeTenants.length > 0 && activeTenants[0].id) {
+      activeTenantId = activeTenants[0].id;
+    }
+  } catch (_) {}
+
+  // 3. Check Mock / Demo credentials fallback
   const mockUser = mockUsers.find((u) => u.email === email && u.password === password);
   if (mockUser) {
     return {
       id: mockUser.id,
-      tenantId: mockUser.tenantId,
+      tenantId: activeTenantId,
       email: mockUser.email,
       role: 'admin',
     };
   }
 
-  // 3. Shared demo admin credentials convenience check
+  // 4. Shared demo admin credentials convenience check
   if (
     (email === 'admin@yoursite.com' && password === 'password') ||
     (email === 'support@atypikalstudio.dev' && (password === 'password' || password === 'MockPassword123!')) ||
@@ -47,7 +56,7 @@ export async function validateUserCredentials(email: string, password: string): 
   ) {
     return {
       id: '11111111-1111-1111-1111-111111111111',
-      tenantId: DEFAULT_TENANT_ID,
+      tenantId: activeTenantId,
       email: email,
       role: 'admin',
     };

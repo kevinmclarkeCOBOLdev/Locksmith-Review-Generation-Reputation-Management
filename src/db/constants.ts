@@ -1,4 +1,4 @@
-export const DEFAULT_TENANT_ID = '00000000-0000-0000-0000-000000000001';
+export const DEFAULT_TENANT_ID = process.env.DEFAULT_TENANT_ID || '00000000-0000-0000-0000-000000000000';
 
 export const DEFAULT_SMS_REVIEW_TEMPLATE =
   'Hi {customer_name}, thank you for choosing {business_name}! Could you take 30 seconds to share how we did? {review_link}';

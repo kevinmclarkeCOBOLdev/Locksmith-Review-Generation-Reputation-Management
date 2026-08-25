@@ -2,7 +2,7 @@ import { db } from '@/db';
 import { reviewRequests, leads, reviewTemplates, auditLogs } from '@/db/schema';
 import { eq, and, desc, sql, like, or } from 'drizzle-orm';
 import { generateSecureToken, hashToken } from '@/lib/crypto';
-import { DEFAULT_SMS_REVIEW_TEMPLATE, DEFAULT_EMAIL_REVIEW_TEMPLATE } from '@/db/constants';
+import { DEFAULT_TENANT_ID, DEFAULT_SMS_REVIEW_TEMPLATE, DEFAULT_EMAIL_REVIEW_TEMPLATE } from '@/db/constants';
 import { mockLeads, mockReviewRequests, mockReviewTemplates, mockAuditLogs } from '@/db/mock';
 import type { ReviewRequestItem, DeliveryChannel, ReviewRequestStatus, ReviewTemplateItem } from '@/types/review';
 
@@ -123,6 +123,7 @@ export async function checkDuplicateRequest(
   const cutoffDate = new Date(Date.now() - daysThreshold * 24 * 60 * 60 * 1000);
 
   try {
+    const targetTenantId = tenantId || DEFAULT_TENANT_ID;
     const existing = await db
       .select({
         id: reviewRequests.id,
@@ -134,7 +135,10 @@ export async function checkDuplicateRequest(
       .from(reviewRequests)
       .where(
         and(
-          eq(reviewRequests.tenantId, tenantId),
+          or(
+            eq(reviewRequests.tenantId, targetTenantId),
+            eq(reviewRequests.tenantId, DEFAULT_TENANT_ID)
+          ),
           eq(reviewRequests.leadId, leadId)
         )
       )
@@ -220,8 +224,14 @@ export async function getEligibleLeads(
   const offset = (page - 1) * limit;
 
   try {
+    const targetTenantId = tenantId || DEFAULT_TENANT_ID;
     // 1. Fetch leads matching tenant and search filter
-    const conditions = [eq(leads.tenantId, tenantId)];
+    const conditions = [
+      or(
+        eq(leads.tenantId, targetTenantId),
+        eq(leads.tenantId, DEFAULT_TENANT_ID)
+      )!
+    ];
 
     if (options.status && options.status !== 'all') {
       conditions.push(eq(leads.status, options.status));
@@ -276,7 +286,12 @@ export async function getEligibleLeads(
           createdAt: reviewRequests.createdAt,
         })
         .from(reviewRequests)
-        .where(eq(reviewRequests.tenantId, tenantId))
+        .where(
+          or(
+            eq(reviewRequests.tenantId, targetTenantId),
+            eq(reviewRequests.tenantId, DEFAULT_TENANT_ID)
+          )
+        )
         .orderBy(desc(reviewRequests.createdAt));
 
       for (const req of requests) {
@@ -378,7 +393,13 @@ export async function getReviewTemplates(
   channel?: 'sms' | 'email'
 ): Promise<ReviewTemplateItem[]> {
   try {
-    const conditions = [eq(reviewTemplates.tenantId, tenantId)];
+    const targetTenantId = tenantId || DEFAULT_TENANT_ID;
+    const conditions = [
+      or(
+        eq(reviewTemplates.tenantId, targetTenantId),
+        eq(reviewTemplates.tenantId, DEFAULT_TENANT_ID)
+      )!
+    ];
     if (channel) {
       conditions.push(eq(reviewTemplates.channel, channel));
     }
@@ -609,7 +630,13 @@ export async function getReviewRequests(
   const offset = (page - 1) * limit;
 
   try {
-    const conditions = [eq(reviewRequests.tenantId, tenantId)];
+    const targetTenantId = tenantId || DEFAULT_TENANT_ID;
+    const conditions = [
+      or(
+        eq(reviewRequests.tenantId, targetTenantId),
+        eq(reviewRequests.tenantId, DEFAULT_TENANT_ID)
+      )!
+    ];
 
     if (options.status && options.status !== 'all') {
       conditions.push(eq(reviewRequests.status, options.status));

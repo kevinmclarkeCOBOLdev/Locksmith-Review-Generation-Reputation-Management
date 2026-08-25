@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import { reviewRequests, reviewFeedback, tenants } from '@/db/schema';
-import { eq, and, gte } from 'drizzle-orm';
+import { eq, and, gte, or } from 'drizzle-orm';
+import { DEFAULT_TENANT_ID } from '@/db/constants';
 import { mockReviewRequests, mockReviewFeedback, mockTenants } from '@/db/mock';
 import type { DeliveryChannel } from '@/types/review';
 
@@ -33,6 +34,7 @@ export interface ReputationAnalyticsResult {
   tenantId: string;
   businessName: string;
   timeRange: AnalyticsTimeRange;
+  startDate?: string | null;
   metrics: {
     totalRequests: number;
     sentRequests: number;
@@ -46,6 +48,18 @@ export interface ReputationAnalyticsResult {
     positiveRatio: number;
     publicClickCount: number;
     publicClickRate: number;
+  };
+  summary?: {
+    totalRequests: number;
+    sentRequests: number;
+    responseCount: number;
+    responseRate: number;
+    positiveCount: number;
+    negativeCount: number;
+    positiveRatio: number;
+    averageRating: number;
+    platformClicks: number;
+    platformClickRate: number;
   };
   ratingDistribution: RatingDistributionBucket[];
   channelPerformance: ChannelPerformanceMetric[];
@@ -76,15 +90,20 @@ export async function getReputationAnalytics(
   timeRange: AnalyticsTimeRange = '30d'
 ): Promise<ReputationAnalyticsResult> {
   const startDate = calculateStartDate(timeRange);
+  const targetTenantId = tenantId || DEFAULT_TENANT_ID;
 
   // 1. Resolve business name
   let businessName = 'DEMO Locksmith';
   try {
-    const tenantRecords = await db
+    let tenantRecords = await db
       .select({ name: tenants.name })
       .from(tenants)
-      .where(eq(tenants.id, tenantId))
+      .where(eq(tenants.id, targetTenantId))
       .limit(1);
+
+    if (!tenantRecords || tenantRecords.length === 0) {
+      tenantRecords = await db.select({ name: tenants.name }).from(tenants).limit(1);
+    }
 
     if (tenantRecords && tenantRecords.length > 0) {
       businessName = tenantRecords[0].name;
@@ -102,8 +121,18 @@ export async function getReputationAnalytics(
   let feedbackList: any[] = [];
 
   try {
-    const reqConditions = [eq(reviewRequests.tenantId, tenantId)];
-    const fbConditions = [eq(reviewFeedback.tenantId, tenantId)];
+    const reqConditions = [
+      or(
+        eq(reviewRequests.tenantId, targetTenantId),
+        eq(reviewRequests.tenantId, DEFAULT_TENANT_ID)
+      )!
+    ];
+    const fbConditions = [
+      or(
+        eq(reviewFeedback.tenantId, targetTenantId),
+        eq(reviewFeedback.tenantId, DEFAULT_TENANT_ID)
+      )!
+    ];
 
     if (startDate) {
       reqConditions.push(gte(reviewRequests.createdAt, startDate));
@@ -120,7 +149,6 @@ export async function getReputationAnalytics(
       .from(reviewFeedback)
       .where(and(...fbConditions));
 
-    // If query returns empty and mock arrays have items, trigger fallback
     if (
       requestsList.length === 0 &&
       mockReviewRequests.some((r: any) => r.tenantId === tenantId)
