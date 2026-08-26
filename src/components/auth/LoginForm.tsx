@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Lock, Mail, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Lock, Mail, AlertCircle, CheckCircle2, Eye, EyeOff, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 
@@ -24,6 +24,7 @@ export function LoginForm() {
   const [serverError, setServerError] = useState<string | null>(null);
   const [serverSuccess, setServerSuccess] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -106,20 +107,43 @@ export function LoginForm() {
           </label>
           <div className="relative">
             <Input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder="Enter your password"
               {...register('password')}
               error={errors.password?.message}
               disabled={isLoading}
-              className="pl-10"
+              className="pl-10 pr-10"
             />
             <Lock size={16} className="absolute left-3.5 top-3 text-slate-400 dark:text-neutral-500 pointer-events-none" />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3.5 top-3 text-slate-400 hover:text-slate-600 dark:text-neutral-500 dark:hover:text-neutral-300 focus:outline-none transition-colors cursor-pointer"
+              title={showPassword ? 'Hide password' : 'Show password'}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+            >
+              {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+            </button>
           </div>
         </div>
 
-        <Button type="submit" isLoading={isLoading} className="w-full py-3 text-sm font-bold uppercase tracking-wider">
-          Sign In to LockReview
+        <Button
+          type="submit"
+          isLoading={isLoading}
+          className="w-full py-3 text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2"
+        >
+          <span>Authenticate Session</span>
+          {!isLoading && <ArrowRight size={16} />}
         </Button>
+
+        <div className="pt-4 border-t border-slate-200 dark:border-[#2e2e2e] text-center">
+          <p className="text-[10px] font-bold tracking-widest text-slate-400 dark:text-neutral-500 uppercase">
+            DEMO LOGIN CREDENTIALS
+          </p>
+          <p className="mt-1 text-xs font-mono font-semibold text-[#E76A0E]">
+            admin@yoursite.co.uk / password 123
+          </p>
+        </div>
       </form>
     </div>
   );

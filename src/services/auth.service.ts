@@ -44,8 +44,11 @@ export async function validateUserCredentials(email: string, password: string): 
   }
 
   // 2. If MySQL users table is empty or DB offline, strictly validate against configured demo identity
+  const cleanPassword = inputPassword.replace(/\s+/g, '');
   const mockUser = mockUsers.find(
-    (u) => u.email.toLowerCase() === normalizedEmail && u.password === inputPassword
+    (u) =>
+      u.email.toLowerCase() === normalizedEmail &&
+      (u.password === inputPassword || u.password === cleanPassword)
   );
 
   if (mockUser) {

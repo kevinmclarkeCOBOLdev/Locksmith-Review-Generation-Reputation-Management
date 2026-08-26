@@ -9,16 +9,22 @@ export async function middleware(request: NextRequest) {
   // Verify the JWT token
   const session = sessionToken ? await verifyJWT(sessionToken) : null;
 
-  // Route protection: If unauthenticated user tries to access /dashboard directly, redirect to /login
+  // Route protection: If unauthenticated user tries to access /dashboard directly, redirect to home with login modal
   if (pathname.startsWith('/dashboard') && !session) {
-    const loginUrl = new URL('/login', request.url);
+    const loginUrl = new URL('/', request.url);
+    loginUrl.searchParams.set('login', 'true');
     loginUrl.searchParams.set('redirect', pathname);
     return NextResponse.redirect(loginUrl);
   }
 
-  // If authenticated user visits /login, redirect to /dashboard
-  if (pathname === '/login' && session) {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
+  // If user visits legacy /login route, redirect to /dashboard (if authenticated) or home with login modal
+  if (pathname === '/login') {
+    if (session) {
+      return NextResponse.redirect(new URL('/dashboard', request.url));
+    }
+    const homeLoginUrl = new URL('/', request.url);
+    homeLoginUrl.searchParams.set('login', 'true');
+    return NextResponse.redirect(homeLoginUrl);
   }
 
   // Pass user and tenant context to downstream headers if authenticated

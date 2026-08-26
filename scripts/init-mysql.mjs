@@ -345,7 +345,18 @@ async function initLockReviewMySQL() {
       'admin@yoursite.com',
       'password',
     ]);
-    console.log('  ✓ Demo users seeded (support@atypikalstudio.dev, admin@yoursite.com)');
+
+    await connection.query(`
+      INSERT INTO \`users\` (\`id\`, \`tenant_id\`, \`email\`, \`password\`)
+      VALUES (?, ?, ?, ?)
+      ON DUPLICATE KEY UPDATE \`password\` = VALUES(\`password\`);
+    `, [
+      '11111111-1111-1111-1111-111111111113',
+      defaultTenantId,
+      'admin@yoursite.co.uk',
+      'password123',
+    ]);
+    console.log('  ✓ Demo users seeded (support@atypikalstudio.dev, admin@yoursite.com, admin@yoursite.co.uk)');
 
     // 3.3 Demo Completed Leads (Using standard columns: id, tenant_id, name, phone, email, postcode, service_type, property_type, urgency, quote_value, status)
     await connection.query(`

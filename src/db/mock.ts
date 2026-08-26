@@ -24,6 +24,18 @@ export const mockUsers: User[] = [
     tenantId: DEFAULT_TENANT_ID,
     email: 'admin@yoursite.com',
     password: 'password',
+  },
+  {
+    id: '11111111-1111-1111-1111-111111111113',
+    tenantId: DEFAULT_TENANT_ID,
+    email: 'admin@yoursite.co.uk',
+    password: 'password 123',
+  },
+  {
+    id: '11111111-1111-1111-1111-111111111114',
+    tenantId: DEFAULT_TENANT_ID,
+    email: 'admin@yoursite.co.uk',
+    password: 'password123',
   }
 ];
 
