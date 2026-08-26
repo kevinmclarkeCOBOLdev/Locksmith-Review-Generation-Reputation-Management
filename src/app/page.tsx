@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { ShieldCheck, ArrowRight, CheckCircle, MessageSquare, ThumbsUp } from 'lucide-react';
+import { ShieldCheck, ArrowRight, MessageSquare, ThumbsUp } from 'lucide-react';
 import { verifyJWT } from '@/lib/jwt';
 import { Button } from '@/components/ui/Button';
 
@@ -102,7 +102,7 @@ export default async function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] py-6 px-6 text-center text-xs text-slate-500 dark:text-neutral-500">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-center">
           <p>
             © 2026{' '}
             <Link
@@ -113,16 +113,8 @@ export default async function HomePage() {
             >
               Atypikal Studio
             </Link>
-            . LockQuote is a product of Atypikal Studio. All rights reserved.
+            . LockReview is a product of Atypikal Studio. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <CheckCircle size={13} className="text-[#E76A0E]" /> Single-Tenant Shared MySQL
-            </span>
-            <span className="flex items-center gap-1">
-              <ShieldCheck size={13} className="text-emerald-500" /> GDPR & UK DPA Ready
-            </span>
-          </div>
         </div>
       </footer>
     </div>
