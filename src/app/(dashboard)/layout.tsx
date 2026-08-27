@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
@@ -91,8 +92,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="p-6 space-y-6">
           {/* Logo & Ecosystem Badge */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-[#E76A0E] text-white flex items-center justify-center font-black text-sm shrink-0">
-              LR
+            <div className="w-9 h-9 relative shrink-0 flex items-center justify-center">
+              <Image
+                src="/lockreview-icon-lt-sq.webp"
+                alt="LockReview"
+                width={36}
+                height={36}
+                priority
+                className="w-9 h-9 block dark:hidden object-contain"
+              />
+              <Image
+                src="/lockreview-icon-dk-sq.webp"
+                alt="LockReview"
+                width={36}
+                height={36}
+                priority
+                className="w-9 h-9 hidden dark:block object-contain"
+              />
             </div>
             <div>
               <h1 className="font-extrabold text-sm tracking-tight text-slate-900 dark:text-white">
@@ -112,7 +128,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </span>
             </div>
             <SidebarLink href="/dashboard" icon={<LayoutDashboard size={18} />}>
-              Overview
+              Dashboard
             </SidebarLink>
             <SidebarLink href="/dashboard/requests" icon={<Send size={18} />}>
               Review Requests
@@ -182,8 +198,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Mobile Header */}
         <header className="md:hidden h-16 border-b border-slate-200 dark:border-[#333333] bg-white dark:bg-[#161616] flex items-center justify-between px-6 shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 bg-[#E76A0E] text-white flex items-center justify-center font-black text-xs">
-              LR
+            <div className="w-7 h-7 relative shrink-0 flex items-center justify-center">
+              <Image
+                src="/lockreview-icon-lt-sq.webp"
+                alt="LockReview"
+                width={28}
+                height={28}
+                priority
+                className="w-7 h-7 block dark:hidden object-contain"
+              />
+              <Image
+                src="/lockreview-icon-dk-sq.webp"
+                alt="LockReview"
+                width={28}
+                height={28}
+                priority
+                className="w-7 h-7 hidden dark:block object-contain"
+              />
             </div>
             <h1 className="font-extrabold text-sm text-slate-900 dark:text-white">LockReview</h1>
           </div>
