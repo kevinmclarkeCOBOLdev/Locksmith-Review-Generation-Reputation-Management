@@ -13,6 +13,7 @@ import {
   LogOut,
   ShieldCheck,
   ExternalLink,
+  BookOpen,
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeProvider';
 
@@ -147,6 +148,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
             <SidebarLink href="/dashboard/settings" icon={<Sliders size={18} />}>
               Platforms & Settings
+            </SidebarLink>
+
+            <div className="pt-4 pb-1">
+              <span className="px-4 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-neutral-500">
+                Help & Docs
+              </span>
+            </div>
+            <SidebarLink href="/documentation" icon={<BookOpen size={18} />}>
+              Documentation
             </SidebarLink>
 
             <div className="pt-4 pb-1">
