@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { ShieldCheck, ArrowRight, MessageSquare, ThumbsUp } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { LoginModal } from '@/components/auth/LoginModal';
+import { ThemeToggle } from '@/components/ThemeProvider';
 
 export function HomeClient() {
   const searchParams = useSearchParams();
@@ -29,18 +31,27 @@ export function HomeClient() {
       {/* Header */}
       <header className="border-b border-slate-200 dark:border-[#2e2e2e] bg-white dark:bg-[#1f1f1f] px-6 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#E76A0E] text-white flex items-center justify-center font-black text-sm">
-              LR
-            </div>
-            <div>
-              <span className="font-extrabold text-base tracking-tight text-slate-900 dark:text-white">
-                LockReview
-              </span>
-            </div>
-          </div>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/lockreview-icon-lt-lg.webp"
+              alt="LockReview"
+              width={180}
+              height={32}
+              priority
+              className="h-8 w-auto block dark:hidden object-contain"
+            />
+            <Image
+              src="/lockreview-icon-dk-lg.webp"
+              alt="LockReview"
+              width={180}
+              height={33}
+              priority
+              className="h-8 w-auto hidden dark:block object-contain"
+            />
+          </Link>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <ThemeToggle iconOnly />
             <Button
               size="sm"
               className="font-bold cursor-pointer"
@@ -55,7 +66,7 @@ export function HomeClient() {
       {/* Hero Section */}
       <main className="max-w-6xl mx-auto px-6 py-16 md:py-24 flex flex-col items-center text-center">
         <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white max-w-4xl leading-tight">
-          Automate 5-Star Reviews & Protect Your Locksmith Reputation
+          Automate 5-Star Reviews &amp; Protect Your Locksmith Reputation
         </h1>
 
         <p className="mt-6 text-base md:text-lg text-slate-600 dark:text-neutral-300 max-w-2xl leading-relaxed">

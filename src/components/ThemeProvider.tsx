@@ -14,10 +14,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const savedTheme = localStorage.getItem('lockreview-theme') as Theme | null;
     if (savedTheme) {
       setTheme(savedTheme);
@@ -37,7 +35,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={mounted ? '' : 'invisible'}>{children}</div>
+      {children}
     </ThemeContext.Provider>
   );
 }
@@ -50,18 +48,41 @@ export function useTheme() {
   return context;
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({
+  iconOnly = false,
+  className = '',
+}: {
+  iconOnly?: boolean;
+  className?: string;
+} = {}) {
   const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isLight = mounted && theme === 'light';
 
   return (
     <button
       onClick={toggleTheme}
       type="button"
-      className="p-2 text-slate-500 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#282828] border border-slate-200 dark:border-[#383838] transition-all cursor-pointer flex items-center gap-2 text-xs font-semibold"
-      title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
+      suppressHydrationWarning
+      className={
+        className ||
+        `p-2 text-slate-500 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#282828] border border-slate-200 dark:border-[#383838] transition-all cursor-pointer flex items-center justify-center ${iconOnly ? 'w-9 h-9' : 'gap-2 text-xs font-semibold'
+        }`
+      }
+      title={`Switch to ${isLight ? 'Dark' : 'Light'} mode`}
+      aria-label={`Switch to ${isLight ? 'Dark' : 'Light'} mode`}
     >
-      {theme === 'dark' ? <Sun size={15} className="text-amber-400" /> : <Moon size={15} className="text-slate-600" />}
-      <span className="capitalize">{theme}</span>
+      {isLight ? (
+        <Moon size={16} className="text-slate-600 dark:text-neutral-400 shrink-0" />
+      ) : (
+        <Sun size={16} className="text-amber-400 shrink-0" />
+      )}
+      {!iconOnly && <span className="capitalize">{mounted ? theme : 'dark'}</span>}
     </button>
   );
 }

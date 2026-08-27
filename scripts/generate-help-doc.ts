@@ -16,7 +16,6 @@ import {
   Header,
   Footer,
   PageNumber,
-  NumberFormat,
 } from 'docx';
 
 async function createHelpDocument() {
