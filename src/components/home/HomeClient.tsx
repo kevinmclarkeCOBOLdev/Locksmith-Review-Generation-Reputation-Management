@@ -127,20 +127,31 @@ export function HomeClient() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] py-6 px-6 text-center text-xs text-slate-500 dark:text-neutral-500">
-        <div className="max-w-6xl mx-auto flex items-center justify-center">
+      <footer className="border-t border-slate-200 dark:border-[#2e2e2e] bg-white dark:bg-[#1a1a1a] py-6 px-6 text-xs text-slate-500 dark:text-neutral-500">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>
             © 2026{' '}
             <Link
               href="https://atypikalstudio.dev/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline text-slate-700 dark:text-neutral-300"
+              className="hover:underline text-slate-700 dark:text-neutral-300 font-medium"
             >
               Atypikal Studio
             </Link>
             . LockReview is a product of Atypikal Studio. All rights reserved.
           </p>
+          <div className="flex items-center gap-6 font-medium">
+            <Link href="/documentation" className="hover:text-[#E76A0E] transition-colors">
+              Documentation
+            </Link>
+            <Link href="/privacy-policy" className="hover:text-[#E76A0E] transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-use" className="hover:text-[#E76A0E] transition-colors">
+              Terms of Use
+            </Link>
+          </div>
         </div>
       </footer>
 

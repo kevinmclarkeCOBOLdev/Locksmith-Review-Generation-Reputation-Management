@@ -12,8 +12,10 @@ import {
   BarChart3,
   LogOut,
   ShieldCheck,
+  Shield,
   ExternalLink,
   BookOpen,
+  FileText,
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeProvider';
 
@@ -157,6 +159,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
             <SidebarLink href="/documentation" icon={<BookOpen size={18} />}>
               Documentation
+            </SidebarLink>
+            <SidebarLink href="/privacy-policy" icon={<Shield size={18} />}>
+              Privacy Policy
+            </SidebarLink>
+            <SidebarLink href="/terms-of-use" icon={<FileText size={18} />}>
+              Terms of Use
             </SidebarLink>
 
             <div className="pt-4 pb-1">

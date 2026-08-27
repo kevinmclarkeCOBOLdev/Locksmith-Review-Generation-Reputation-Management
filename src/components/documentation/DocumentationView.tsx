@@ -353,10 +353,43 @@ export function DocumentationView() {
       </main>
 
       {/* Footer */}
-      <footer className="max-w-7xl mx-auto px-6 py-8 border-t border-slate-200 dark:border-[#383838] text-center text-xs text-slate-500 dark:text-neutral-400">
-        <p>
-          © {new Date().getFullYear()} Atypikal Studio. LockReview is a registered trademark of Atypikal Studio. All rights reserved.
-        </p>
+      <footer className="border-t border-slate-200 dark:border-[#383838] bg-slate-100 dark:bg-[#161616] py-8 relative z-10 mt-16">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-neutral-400 gap-4">
+          <p>
+            © {new Date().getFullYear()}{' '}
+            <a
+              href="https://atypikalstudio.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#E76A0E] underline transition-colors font-medium"
+            >
+              Atypikal Studio
+            </a>
+            . LockReview is a product of Atypikal Studio. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 font-medium">
+            <Link href="/" className="hover:text-[#E76A0E] transition-colors">
+              Home
+            </Link>
+            <Link href="/documentation" className="text-[#E76A0E] font-bold underline">
+              Documentation
+            </Link>
+            <Link href="/privacy-policy" className="hover:text-[#E76A0E] transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-use" className="hover:text-[#E76A0E] transition-colors">
+              Terms of Use
+            </Link>
+            <Link
+              href="https://lockquote.atypikalstudio.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#E76A0E] transition-colors"
+            >
+              Open LockQuote
+            </Link>
+          </div>
+        </div>
       </footer>
     </div>
   );
