@@ -11,6 +11,7 @@
     "db:generate": "drizzle-kit generate",
     "db:init": "node scripts/init-mysql.mjs",
     "db:seed": "node scripts/init-mysql.mjs",
+    "db:reset-demo": "npx tsx scripts/reset-demo.ts",
     "test:auth": "npx tsx scripts/test-auth-isolation.ts",
     "test:schema": "npx tsx scripts/test-schema-migrations.ts",
     "test:dashboard": "npx tsx scripts/test-dashboard-shell.ts",
@@ -22,7 +23,8 @@
     "test:settings": "npx tsx scripts/test-reputation-settings.ts",
     "test:analytics": "npx tsx scripts/test-reputation-analytics.ts",
     "test:automation": "npx tsx scripts/test-post-job-automation.ts",
-    "test": "npm run test:auth && npm run test:schema && npm run test:dashboard && npm run test:requests && npm run test:notifications && npm run test:public-review && npm run test:feedback-flows && npm run test:management && npm run test:settings && npm run test:analytics && npm run test:automation"
+    "test:demo-reset": "npx tsx scripts/test-demo-reset.ts",
+    "test": "npm run test:auth && npm run test:schema && npm run test:dashboard && npm run test:requests && npm run test:notifications && npm run test:public-review && npm run test:feedback-flows && npm run test:management && npm run test:settings && npm run test:analytics && npm run test:automation && npm run test:demo-reset"
   },
   "dependencies": {
     "clsx": "^2.1.1",
