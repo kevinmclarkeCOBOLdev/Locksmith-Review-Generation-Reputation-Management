@@ -73,7 +73,7 @@ export function HomeClient() {
           Direct 4–5 star satisfied customers to Google Reviews in one tap. Intercept 1–3 star private complaints internally before they ever hit the public internet.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
+        <div className="mt-10 flex items-center justify-center">
           <Button
             size="lg"
             className="px-8 py-4 text-sm font-black uppercase tracking-wider flex items-center gap-2 cursor-pointer"
@@ -81,14 +81,6 @@ export function HomeClient() {
           >
             Launch LockReview Dashboard
             <ArrowRight size={16} />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="px-8 py-4 text-sm font-bold uppercase tracking-wider cursor-pointer"
-            onClick={() => setIsLoginOpen(true)}
-          >
-            Demo Locksmith Login
           </Button>
         </div>
 
