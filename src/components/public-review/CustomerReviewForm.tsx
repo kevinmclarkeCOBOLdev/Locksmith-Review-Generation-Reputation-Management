@@ -163,7 +163,7 @@ export function CustomerReviewForm({ initialData, token }: CustomerReviewFormPro
 
           {initialData.businessPhone && (
             <div className="p-3 bg-slate-50 dark:bg-[#282828] border border-slate-200 dark:border-[#3a3a3a] text-xs text-slate-700 dark:text-neutral-300 flex items-center justify-center gap-2">
-              <Phone size={14} className="text-[#E76A0E]" />
+              <Phone size={14} className="text-[#00d492]" />
               <span>Call: <a href={`tel:${initialData.businessPhone}`} className="font-bold underline">{initialData.businessPhone}</a></span>
             </div>
           )}
@@ -220,7 +220,7 @@ export function CustomerReviewForm({ initialData, token }: CustomerReviewFormPro
   return (
     <Card className="border border-slate-200 dark:border-[#333333] shadow-2xl text-center p-6 sm:p-8 bg-white dark:bg-[#1f1f1f]">
       <CardHeader className="p-0 mb-6 space-y-3">
-        <div className="inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-orange-50 dark:bg-orange-950/40 text-[#E76A0E] border border-orange-200 dark:border-orange-900/40 text-[10px] font-bold uppercase tracking-widest mx-auto">
+        <div className="inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-[#00d492]/10 dark:bg-[#00d492]/15 text-[#00d492] border border-[#00d492]/30 text-[10px] font-bold uppercase tracking-widest mx-auto">
           <Sparkles size={12} />
           Quick 30-Second Feedback
         </div>

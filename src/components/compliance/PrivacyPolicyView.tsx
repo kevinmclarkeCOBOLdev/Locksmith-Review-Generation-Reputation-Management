@@ -42,9 +42,9 @@ export function PrivacyPolicyView() {
   const defaultRetentionDays = '365';
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#181818] text-slate-900 dark:text-neutral-100 font-sans selection:bg-[#E76A0E]/30 selection:text-[#E76A0E] transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#181818] text-slate-900 dark:text-neutral-100 font-sans selection:bg-[#00d492]/30 selection:text-[#00d492] transition-colors duration-200">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#E76A0E]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#00d492]/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Navigation Header */}
       <header className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10 border-b border-slate-200 dark:border-[#383838]">
@@ -96,7 +96,7 @@ export function PrivacyPolicyView() {
             href="/dashboard"
             className="flex items-center gap-1.5 bg-slate-200 dark:bg-[#2a2a2a] hover:bg-slate-300 dark:hover:bg-[#333333] border border-slate-300 dark:border-[#3d3d3d] text-slate-900 dark:text-white text-xs font-semibold px-3.5 py-2 transition-all cursor-pointer"
           >
-            <ArrowLeft size={14} className="text-[#E76A0E]" />
+            <ArrowLeft size={14} className="text-[#00d492]" />
             <span>Return to Dashboard</span>
           </Link>
         </div>
@@ -153,7 +153,7 @@ export function PrivacyPolicyView() {
                   <strong>Email Inquiries:</strong>{' '}
                   <a
                     href="mailto:support@atypikalstudio.dev"
-                    className="text-[#E76A0E] underline"
+                    className="text-[#00d492] underline"
                   >
                     support@atypikalstudio.dev
                   </a>
@@ -167,7 +167,7 @@ export function PrivacyPolicyView() {
                     href="https://atypikalstudio.dev"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#E76A0E] underline"
+                    className="text-[#00d492] underline"
                   >
                     https://atypikalstudio.dev
                   </a>
@@ -186,7 +186,7 @@ export function PrivacyPolicyView() {
                 We collect and process personal data necessary to generate review invitations, record customer feedback, route positive ratings, and intercept private service recovery tickets:
               </p>
               <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#383838] p-4 space-y-2">
-                <h3 className="font-bold text-xs uppercase tracking-wider text-[#E76A0E]">
+                <h3 className="font-bold text-xs uppercase tracking-wider text-[#00d492]">
                   Data Categories Processed in LockReview:
                 </h3>
                 <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-700 dark:text-neutral-300">
@@ -398,7 +398,7 @@ export function PrivacyPolicyView() {
                     href="https://ico.org.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#E76A0E] underline inline-flex items-center gap-1"
+                    className="text-[#00d492] underline inline-flex items-center gap-1"
                   >
                     https://ico.org.uk <ExternalLink size={11} />
                   </a>
@@ -456,30 +456,30 @@ export function PrivacyPolicyView() {
               href="https://atypikalstudio.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#E76A0E] underline transition-colors font-medium"
+              className="hover:text-[#00d492] underline transition-colors font-medium"
             >
               Atypikal Studio
             </a>
             . LockReview is a product of Atypikal Studio. All rights reserved.
           </p>
           <div className="flex items-center gap-6 font-medium">
-            <Link href="/" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/" className="hover:text-[#00d492] transition-colors">
               Home
             </Link>
-            <Link href="/documentation" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/documentation" className="hover:text-[#00d492] transition-colors">
               Documentation
             </Link>
-            <Link href="/privacy-policy" className="text-[#E76A0E] font-bold underline">
+            <Link href="/privacy-policy" className="text-[#00d492] font-bold underline">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-use" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/terms-of-use" className="hover:text-[#00d492] transition-colors">
               Terms of Use
             </Link>
             <Link
               href="https://lockquote.atypikalstudio.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#E76A0E] transition-colors"
+              className="hover:text-[#00d492] transition-colors"
             >
               Open LockQuote
             </Link>

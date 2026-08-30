@@ -118,9 +118,9 @@ export const documentationFeatures: DocTocItem[] = [
 
 export function DocumentationView() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#181818] text-slate-900 dark:text-neutral-100 font-sans selection:bg-[#E76A0E]/30 selection:text-[#E76A0E] transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#181818] text-slate-900 dark:text-neutral-100 font-sans selection:bg-[#00d492]/30 selection:text-[#00d492] transition-colors duration-200">
       {/* Ambient background lighting */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#E76A0E]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#00d492]/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Navigation Header */}
       <header className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10 border-b border-slate-200 dark:border-[#383838]">
@@ -172,7 +172,7 @@ export function DocumentationView() {
             href="/dashboard"
             className="flex items-center gap-1.5 bg-slate-200 dark:bg-[#2a2a2a] hover:bg-slate-300 dark:hover:bg-[#333333] border border-slate-300 dark:border-[#3d3d3d] text-slate-900 dark:text-white text-xs font-semibold px-3.5 py-2 transition-all cursor-pointer"
           >
-            <ArrowLeft size={14} className="text-[#E76A0E]" />
+            <ArrowLeft size={14} className="text-[#00d492]" />
             <span>Return to Dashboard</span>
           </Link>
         </div>
@@ -183,7 +183,7 @@ export function DocumentationView() {
         {/* Header Metadata Section */}
         <header className="space-y-6 text-left border-b border-slate-200 dark:border-[#383838] pb-8">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E76A0E]/10 border border-[#E76A0E]/30 text-xs font-bold text-[#E76A0E] uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00d492]/10 border border-[#00d492]/30 text-xs font-bold text-[#00d492] uppercase tracking-wider">
             <BookOpen size={14} /> Platform Documentation &amp; Feature Manual
           </div>
 
@@ -200,7 +200,7 @@ export function DocumentationView() {
           {/* Metadata Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#383838] p-4 shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-[#E76A0E]/15 border border-[#E76A0E]/30 flex items-center justify-center text-[#E76A0E] shrink-0">
+              <div className="w-9 h-9 bg-[#00d492]/15 border border-[#00d492]/30 flex items-center justify-center text-[#00d492] shrink-0">
                 <Layers size={18} />
               </div>
               <div>
@@ -214,7 +214,7 @@ export function DocumentationView() {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-[#E76A0E]/15 border border-[#E76A0E]/30 flex items-center justify-center text-[#E76A0E] shrink-0">
+              <div className="w-9 h-9 bg-[#00d492]/15 border border-[#00d492]/30 flex items-center justify-center text-[#00d492] shrink-0">
                 <ShieldCheck size={18} />
               </div>
               <div>
@@ -228,7 +228,7 @@ export function DocumentationView() {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-[#E76A0E]/15 border border-[#E76A0E]/30 flex items-center justify-center text-[#E76A0E] shrink-0">
+              <div className="w-9 h-9 bg-[#00d492]/15 border border-[#00d492]/30 flex items-center justify-center text-[#00d492] shrink-0">
                 <Sparkles size={18} />
               </div>
               <div>
@@ -248,12 +248,12 @@ export function DocumentationView() {
           {/* Left Column: Informational Callout & Overview Cards */}
           <div className="lg:col-span-7 space-y-8">
             {/* Prominent Paid-Up Owner Notice Card */}
-            <div className="bg-gradient-to-br from-[#E76A0E]/10 via-[#E76A0E]/5 to-transparent border-2 border-[#E76A0E]/30 dark:border-[#E76A0E]/40 p-6 sm:p-8 space-y-5 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none text-[#E76A0E]">
+            <div className="bg-gradient-to-br from-[#00d492]/10 via-[#00d492]/5 to-transparent border-2 border-[#00d492]/30 dark:border-[#00d492]/40 p-6 sm:p-8 space-y-5 shadow-lg relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none text-[#00d492]">
                 <BookOpen size={120} />
               </div>
 
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E76A0E]/20 text-[#E76A0E] font-extrabold text-xs uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00d492]/20 text-[#00d492] font-extrabold text-xs uppercase tracking-wider">
                 <Info size={14} className="shrink-0" />
                 <span>Subscription Access</span>
               </div>
@@ -268,7 +268,7 @@ export function DocumentationView() {
                     href="https://atypikalstudio.dev/locksmiths/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#E76A0E] font-extrabold underline decoration-[#E76A0E]/50 hover:decoration-[#E76A0E] hover:text-[#d35e09] transition-colors inline-flex items-center gap-1 group"
+                    className="text-[#00d492] font-extrabold underline decoration-[#00d492]/50 hover:decoration-[#00d492] hover:text-[#00bc82] transition-colors inline-flex items-center gap-1 group"
                   >
                     <span>Contact Atypikal Studio to find out more.</span>
                     <ExternalLink
@@ -279,17 +279,17 @@ export function DocumentationView() {
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-[#E76A0E]/20 flex flex-wrap items-center gap-4 text-xs text-slate-600 dark:text-neutral-300">
+              <div className="pt-3 border-t border-[#00d492]/20 flex flex-wrap items-center gap-4 text-xs text-slate-600 dark:text-neutral-300">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 size={14} className="text-[#E76A0E] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#00d492] shrink-0" />
                   <span>Dedicated MySQL database setup</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 size={14} className="text-[#E76A0E] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#00d492] shrink-0" />
                   <span>Automated post-job review triggers</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 size={14} className="text-[#E76A0E] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#00d492] shrink-0" />
                   <span>Full operational handbook &amp; templates</span>
                 </div>
               </div>
@@ -298,7 +298,7 @@ export function DocumentationView() {
             {/* Quick Overview Section */}
             <div className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#383838] p-6 space-y-4 shadow-sm">
               <h3 className="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-                <Layers size={18} className="text-[#E76A0E]" />
+                <Layers size={18} className="text-[#00d492]" />
                 <span>Platform Capabilities at a Glance</span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-400 leading-relaxed">
@@ -361,30 +361,30 @@ export function DocumentationView() {
               href="https://atypikalstudio.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#E76A0E] underline transition-colors font-medium"
+              className="hover:text-[#00d492] underline transition-colors font-medium"
             >
               Atypikal Studio
             </a>
             . LockReview is a product of Atypikal Studio. All rights reserved.
           </p>
           <div className="flex items-center gap-6 font-medium">
-            <Link href="/" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/" className="hover:text-[#00d492] transition-colors">
               Home
             </Link>
-            <Link href="/documentation" className="text-[#E76A0E] font-bold underline">
+            <Link href="/documentation" className="text-[#00d492] font-bold underline">
               Documentation
             </Link>
-            <Link href="/privacy-policy" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[#00d492] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-use" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/terms-of-use" className="hover:text-[#00d492] transition-colors">
               Terms of Use
             </Link>
             <Link
               href="https://lockquote.atypikalstudio.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#E76A0E] transition-colors"
+              className="hover:text-[#00d492] transition-colors"
             >
               Open LockQuote
             </Link>

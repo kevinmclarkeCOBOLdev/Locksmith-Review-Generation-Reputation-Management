@@ -134,13 +134,13 @@ export function HomeClient() {
             . LockReview is a product of Atypikal Studio. All rights reserved.
           </p>
           <div className="flex items-center gap-6 font-medium">
-            <Link href="/documentation" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/documentation" className="hover:text-[#00d492] transition-colors">
               Documentation
             </Link>
-            <Link href="/privacy-policy" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[#00d492] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-use" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/terms-of-use" className="hover:text-[#00d492] transition-colors">
               Terms of Use
             </Link>
           </div>

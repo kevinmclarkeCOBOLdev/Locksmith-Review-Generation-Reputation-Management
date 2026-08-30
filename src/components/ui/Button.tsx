@@ -12,7 +12,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const baseStyles = 'inline-flex items-center justify-center font-bold transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none';
 
     const variantStyles = {
-      primary: 'bg-[#E76A0E] text-white hover:bg-[#d15d0b] shadow-sm',
+      primary: 'bg-[#00d492] text-slate-950 hover:bg-[#00bc82] shadow-sm font-bold',
       secondary: 'bg-slate-200 dark:bg-[#2e2e2e] text-slate-900 dark:text-neutral-100 hover:bg-slate-300 dark:hover:bg-[#383838]',
       outline: 'border border-slate-300 dark:border-[#383838] bg-transparent text-slate-800 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-[#282828]',
       danger: 'bg-rose-600 text-white hover:bg-rose-700',

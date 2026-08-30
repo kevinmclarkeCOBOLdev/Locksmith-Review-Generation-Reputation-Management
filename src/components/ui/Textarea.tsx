@@ -20,7 +20,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           disabled={disabled}
           className={cn(
-            'w-full px-3 py-2 bg-white dark:bg-[#1f1f1f] border border-slate-300 dark:border-[#383838] text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-neutral-500 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#E76A0E] focus:border-[#E76A0E] transition-colors disabled:opacity-50 disabled:cursor-not-allowed resize-y',
+            'w-full px-3 py-2 bg-white dark:bg-[#1f1f1f] border border-slate-300 dark:border-[#383838] text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-neutral-500 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#00d492] focus:border-[#00d492] transition-colors disabled:opacity-50 disabled:cursor-not-allowed resize-y',
             error && 'border-rose-500 focus:border-rose-500 focus:ring-rose-500',
             className
           )}

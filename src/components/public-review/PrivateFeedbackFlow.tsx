@@ -166,7 +166,7 @@ export function PrivateFeedbackFlow({
               type="checkbox"
               checked={requestContact}
               onChange={(e) => setRequestContact(e.target.checked)}
-              className="mt-0.5 rounded-none text-[#E76A0E] focus:ring-[#E76A0E]"
+              className="mt-0.5 rounded-none text-[#00d492] focus:ring-[#00d492] accent-[#00d492]"
               disabled={isSubmitting}
             />
             <span className="text-xs text-slate-700 dark:text-neutral-300 leading-snug">

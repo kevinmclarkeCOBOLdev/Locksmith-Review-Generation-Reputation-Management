@@ -43,7 +43,7 @@ export function FeedbackDetailModal({
       title={
         <div className="flex items-center justify-between w-full pr-6">
           <div className="flex items-center gap-2">
-            <MessageSquare size={18} className="text-[#E76A0E]" />
+            <MessageSquare size={18} className="text-[#00d492]" />
             <span>Customer Feedback Inspector</span>
           </div>
           {feedbackItem && (
@@ -60,7 +60,7 @@ export function FeedbackDetailModal({
     >
       {isLoading ? (
         <div className="p-12 text-center text-slate-500 space-y-3">
-          <div className="w-8 h-8 border-2 border-[#E76A0E] border-t-transparent animate-spin mx-auto" />
+          <div className="w-8 h-8 border-2 border-[#00d492] border-t-transparent animate-spin mx-auto" />
           <p className="text-xs">Loading feedback details and timeline...</p>
         </div>
       ) : !feedbackItem ? (
@@ -117,7 +117,7 @@ export function FeedbackDetailModal({
               {feedbackItem.customerPhone && (
                 <div className="flex items-center gap-2">
                   <Phone size={14} className="text-slate-400" />
-                  <a href={`tel:${feedbackItem.customerPhone}`} className="hover:text-[#E76A0E]">
+                  <a href={`tel:${feedbackItem.customerPhone}`} className="hover:text-[#00d492]">
                     {feedbackItem.customerPhone}
                   </a>
                 </div>
@@ -125,7 +125,7 @@ export function FeedbackDetailModal({
               {feedbackItem.customerEmail && (
                 <div className="flex items-center gap-2">
                   <Mail size={14} className="text-slate-400" />
-                  <a href={`mailto:${feedbackItem.customerEmail}`} className="hover:text-[#E76A0E]">
+                  <a href={`mailto:${feedbackItem.customerEmail}`} className="hover:text-[#00d492]">
                     {feedbackItem.customerEmail}
                   </a>
                 </div>
@@ -173,7 +173,7 @@ export function FeedbackDetailModal({
               <div className="border-l-2 border-slate-200 dark:border-[#333333] ml-3 pl-4 space-y-4">
                 {feedbackItem.timeline.map((evt, idx) => (
                   <div key={idx} className="relative space-y-1">
-                    <div className="absolute -left-[23px] top-0.5 w-3 h-3 rounded-full bg-[#E76A0E] border-2 border-white dark:border-[#1f1f1f]" />
+                    <div className="absolute -left-[23px] top-0.5 w-3 h-3 rounded-full bg-[#00d492] border-2 border-white dark:border-[#1f1f1f]" />
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-slate-900 dark:text-white text-xs">
                         {evt.title}

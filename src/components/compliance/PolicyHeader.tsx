@@ -25,7 +25,7 @@ export function PolicyHeader({
   return (
     <header className="space-y-6 text-left border-b border-slate-200 dark:border-[#383838] pb-8">
       {/* Badge */}
-      <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E76A0E]/10 border border-[#E76A0E]/30 text-xs font-bold text-[#E76A0E] uppercase tracking-wider">
+      <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00d492]/10 border border-[#00d492]/30 text-xs font-bold text-[#00d492] uppercase tracking-wider">
         {badgeIcon || <ShieldCheck size={14} />} {badgeText}
       </div>
 
@@ -42,7 +42,7 @@ export function PolicyHeader({
       {/* Policy Metadata Card */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#383838] p-4 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-[#E76A0E]/15 border border-[#E76A0E]/30 flex items-center justify-center text-[#E76A0E] shrink-0">
+          <div className="w-9 h-9 bg-[#00d492]/15 border border-[#00d492]/30 flex items-center justify-center text-[#00d492] shrink-0">
             <FileCode size={18} />
           </div>
           <div>
@@ -56,7 +56,7 @@ export function PolicyHeader({
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-[#E76A0E]/15 border border-[#E76A0E]/30 flex items-center justify-center text-[#E76A0E] shrink-0">
+          <div className="w-9 h-9 bg-[#00d492]/15 border border-[#00d492]/30 flex items-center justify-center text-[#00d492] shrink-0">
             <Calendar size={18} />
           </div>
           <div>
@@ -70,7 +70,7 @@ export function PolicyHeader({
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-[#E76A0E]/15 border border-[#E76A0E]/30 flex items-center justify-center text-[#E76A0E] shrink-0">
+          <div className="w-9 h-9 bg-[#00d492]/15 border border-[#00d492]/30 flex items-center justify-center text-[#00d492] shrink-0">
             <Calendar size={18} />
           </div>
           <div>

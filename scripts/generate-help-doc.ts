@@ -19,7 +19,7 @@ import {
 } from 'docx';
 
 async function createHelpDocument() {
-  const brandOrange = 'E76A0E';
+  const brandOrange = '00D492';
   const brandDark = '1E293B';
   const brandGray = '64748B';
   const brandLightBg = 'F8FAFC';

@@ -44,9 +44,9 @@ export function TermsOfUseView() {
   const contactEmail = 'support@atypikalstudio.dev';
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#181818] text-slate-900 dark:text-neutral-100 font-sans selection:bg-[#E76A0E]/30 selection:text-[#E76A0E] transition-colors duration-200">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#181818] text-slate-900 dark:text-neutral-100 font-sans selection:bg-[#00d492]/30 selection:text-[#00d492] transition-colors duration-200">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#E76A0E]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#00d492]/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Navigation Header */}
       <header className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10 border-b border-slate-200 dark:border-[#383838]">
@@ -98,7 +98,7 @@ export function TermsOfUseView() {
             href="/dashboard"
             className="flex items-center gap-1.5 bg-slate-200 dark:bg-[#2a2a2a] hover:bg-slate-300 dark:hover:bg-[#333333] border border-slate-300 dark:border-[#3d3d3d] text-slate-900 dark:text-white text-xs font-semibold px-3.5 py-2 transition-all cursor-pointer"
           >
-            <ArrowLeft size={14} className="text-[#E76A0E]" />
+            <ArrowLeft size={14} className="text-[#00d492]" />
             <span>Return to Dashboard</span>
           </Link>
         </div>
@@ -149,7 +149,7 @@ export function TermsOfUseView() {
             >
               <p>
                 By accessing our website, logging into the LockReview administration dashboard (<code>/dashboard</code>), creating or triggering review invitation campaigns, or submitting ratings through a secure mobile review link (<code>/review/[token]</code>), you agree to be bound by these Terms of Use and our associated{' '}
-                <Link href="/privacy-policy" className="text-[#E76A0E] font-semibold underline">
+                <Link href="/privacy-policy" className="text-[#00d492] font-semibold underline">
                   Privacy Policy
                 </Link>
                 .
@@ -377,7 +377,7 @@ export function TermsOfUseView() {
             >
               <p>
                 Our collection, retention, and processing of customer names, telephone numbers, email addresses, ratings, and private constructive feedback is governed by our comprehensive{' '}
-                <Link href="/privacy-policy" className="text-[#E76A0E] font-semibold underline">
+                <Link href="/privacy-policy" className="text-[#00d492] font-semibold underline">
                   Privacy Policy
                 </Link>
                 .
@@ -409,10 +409,10 @@ export function TermsOfUseView() {
               </div>
 
               <div className="pt-2 flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-neutral-300">
-                <Mail size={14} className="text-[#E76A0E]" />
+                <Mail size={14} className="text-[#00d492]" />
                 <span>
                   For legal inquiries or terms questions, contact:{' '}
-                  <a href={`mailto:${contactEmail}`} className="text-[#E76A0E] underline">
+                  <a href={`mailto:${contactEmail}`} className="text-[#00d492] underline">
                     {contactEmail}
                   </a>
                 </span>
@@ -436,30 +436,30 @@ export function TermsOfUseView() {
               href="https://atypikalstudio.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#E76A0E] underline transition-colors font-medium"
+              className="hover:text-[#00d492] underline transition-colors font-medium"
             >
               Atypikal Studio
             </a>
             . LockReview is a product of Atypikal Studio. All rights reserved.
           </p>
           <div className="flex items-center gap-6 font-medium">
-            <Link href="/" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/" className="hover:text-[#00d492] transition-colors">
               Home
             </Link>
-            <Link href="/documentation" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/documentation" className="hover:text-[#00d492] transition-colors">
               Documentation
             </Link>
-            <Link href="/privacy-policy" className="hover:text-[#E76A0E] transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[#00d492] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-use" className="text-[#E76A0E] font-bold underline">
+            <Link href="/terms-of-use" className="text-[#00d492] font-bold underline">
               Terms of Use
             </Link>
             <Link
               href="https://lockquote.atypikalstudio.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#E76A0E] transition-colors"
+              className="hover:text-[#00d492] transition-colors"
             >
               Open LockQuote
             </Link>

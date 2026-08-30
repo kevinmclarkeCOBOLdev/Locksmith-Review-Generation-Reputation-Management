@@ -158,7 +158,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
           onClick={() => setActiveTab('platforms')}
           className={`px-4 py-2 text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
             activeTab === 'platforms'
-              ? 'bg-[#E76A0E] text-white shadow-sm'
+              ? 'bg-[#00d492] text-slate-950 shadow-sm font-bold'
               : 'bg-slate-100 dark:bg-[#202020] text-slate-700 dark:text-neutral-300 hover:bg-slate-200'
           }`}
         >
@@ -170,7 +170,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
           onClick={() => setActiveTab('rules')}
           className={`px-4 py-2 text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
             activeTab === 'rules'
-              ? 'bg-[#E76A0E] text-white shadow-sm'
+              ? 'bg-[#00d492] text-slate-950 shadow-sm font-bold'
               : 'bg-slate-100 dark:bg-[#202020] text-slate-700 dark:text-neutral-300 hover:bg-slate-200'
           }`}
         >
@@ -182,7 +182,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
           onClick={() => setActiveTab('templates')}
           className={`px-4 py-2 text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
             activeTab === 'templates'
-              ? 'bg-[#E76A0E] text-white shadow-sm'
+              ? 'bg-[#00d492] text-slate-950 shadow-sm font-bold'
               : 'bg-slate-100 dark:bg-[#202020] text-slate-700 dark:text-neutral-300 hover:bg-slate-200'
           }`}
         >
@@ -196,7 +196,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
         <Card className="border border-slate-200 dark:border-[#333333] p-6 bg-white dark:bg-[#1a1a1a] space-y-6">
           <div>
             <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Globe size={18} className="text-[#E76A0E]" />
+              <Globe size={18} className="text-[#00d492]" />
               <span>Public Review Destinations</span>
             </h2>
             <p className="text-xs text-slate-500 dark:text-neutral-400 mt-1">
@@ -243,7 +243,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
                         onChange={(e) =>
                           handlePlatformChange(platform.platformName, 'isEnabled', e.target.checked)
                         }
-                        className="text-[#E76A0E] focus:ring-[#E76A0E]"
+                        className="text-[#00d492] focus:ring-[#00d492] accent-[#00d492]"
                       />
                       <span>{platform.isEnabled ? 'Enabled' : 'Disabled'}</span>
                     </label>
@@ -280,7 +280,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
                         💡 How to get your Google Review link:
                       </span>
                       <p>
-                        Search for your business on Google Maps, click &ldquo;Ask for reviews&rdquo;, and copy the short URL (e.g. <code className="font-mono text-[#E76A0E]">https://g.page/r/.../review</code>).
+                        Search for your business on Google Maps, click &ldquo;Ask for reviews&rdquo;, and copy the short URL (e.g. <code className="font-mono text-[#00d492]">https://g.page/r/.../review</code>).
                       </p>
                     </div>
                   )}
@@ -307,7 +307,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
         <Card className="border border-slate-200 dark:border-[#333333] p-6 bg-white dark:bg-[#1a1a1a] space-y-6">
           <div>
             <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Layers size={18} className="text-[#E76A0E]" />
+              <Layers size={18} className="text-[#00d492]" />
               <span>Review Request Rules & Behavior</span>
             </h2>
             <p className="text-xs text-slate-500 dark:text-neutral-400 mt-1">
@@ -338,7 +338,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
                     onClick={() => setDefaultChannel(ch)}
                     className={`p-3 border font-bold flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer ${
                       defaultChannel === ch
-                        ? 'border-[#E76A0E] bg-orange-50/50 dark:bg-orange-950/30 text-[#E76A0E]'
+                        ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/20 text-[#00d492]'
                         : 'border-slate-300 dark:border-[#3a3a3a] bg-white dark:bg-[#161616] text-slate-700 dark:text-neutral-300'
                     }`}
                   >
@@ -366,7 +366,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
                     onClick={() => setExpirationDays(days)}
                     className={`p-3 border font-bold flex items-center justify-center gap-1.5 cursor-pointer ${
                       expirationDays === days
-                        ? 'border-[#E76A0E] bg-orange-50/50 dark:bg-orange-950/30 text-[#E76A0E]'
+                        ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/20 text-[#00d492]'
                         : 'border-slate-300 dark:border-[#3a3a3a] bg-white dark:bg-[#161616] text-slate-700 dark:text-neutral-300'
                     }`}
                   >
@@ -412,7 +412,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
         <Card className="border border-slate-200 dark:border-[#333333] p-6 bg-white dark:bg-[#1a1a1a] space-y-6">
           <div>
             <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <MessageSquare size={18} className="text-[#E76A0E]" />
+              <MessageSquare size={18} className="text-[#00d492]" />
               <span>Review Request Templates</span>
             </h2>
             <p className="text-xs text-slate-500 dark:text-neutral-400 mt-1">
@@ -470,7 +470,7 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
                   key={token}
                   type="button"
                   onClick={() => handleInsertToken(token, activeTemplateChannel)}
-                  className="px-2 py-1 bg-white dark:bg-[#161616] border border-slate-300 dark:border-[#3a3a3a] text-xs font-mono font-bold text-[#E76A0E] hover:bg-orange-50 dark:hover:bg-[#2a221a] cursor-pointer"
+                  className="px-2 py-1 bg-white dark:bg-[#161616] border border-slate-300 dark:border-[#3a3a3a] text-xs font-mono font-bold text-[#00d492] hover:bg-[#00d492]/10 dark:hover:bg-[#00d492]/20 cursor-pointer"
                 >
                   {token}
                 </button>

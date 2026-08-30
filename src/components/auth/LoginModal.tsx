@@ -165,7 +165,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@yoursite.co.uk"
-                className="block w-full pl-10 pr-4 py-2.5 bg-[#EAF1F8] border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#E76A0E]/30 focus:border-[#E76A0E] transition-all font-medium"
+                className="block w-full pl-10 pr-4 py-2.5 bg-[#EAF1F8] border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00d492]/30 focus:border-[#00d492] transition-all font-medium"
               />
             </div>
           </div>
@@ -186,7 +186,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="password123"
-                className="block w-full pl-10 pr-10 py-2.5 bg-[#EAF1F8] border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#E76A0E]/30 focus:border-[#E76A0E] transition-all font-medium"
+                className="block w-full pl-10 pr-10 py-2.5 bg-[#EAF1F8] border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#00d492]/30 focus:border-[#00d492] transition-all font-medium"
               />
               <button
                 type="button"
@@ -204,7 +204,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#E76A0E] hover:bg-[#d15d0b] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm shadow-lg transition-all duration-200 cursor-pointer mt-2"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#00d492] hover:bg-[#00bc82] disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-bold text-sm shadow-lg transition-all duration-200 cursor-pointer mt-2"
           >
             {loading ? (
               <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -225,7 +225,7 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
           <code 
             onClick={handleAutoFill}
             title="Click to auto-fill visitor credentials"
-            className="text-[11px] text-[#E76A0E] hover:text-[#d15d0b] block mt-1 select-all cursor-pointer font-mono font-bold"
+            className="text-[11px] text-[#00d492] hover:text-[#00bc82] block mt-1 select-all cursor-pointer font-mono font-bold"
           >
             admin@yoursite.co.uk / password123
           </code>

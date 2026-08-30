@@ -105,9 +105,9 @@ export function PositiveFeedbackFlow({
         </div>
 
         {/* Public Platform Call to Action Box */}
-        <div className="p-4 bg-orange-50/70 dark:bg-[#25201b] border border-orange-200 dark:border-orange-950 space-y-4">
+        <div className="p-4 bg-[#00d492]/10 dark:bg-[#00d492]/10 border border-[#00d492]/30 dark:border-[#00d492]/30 space-y-4">
           <div className="space-y-1">
-            <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#E76A0E]">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#00d492]">
               Support Our Local Business
             </span>
             <p className="text-xs text-slate-700 dark:text-neutral-200 leading-snug">
@@ -120,9 +120,9 @@ export function PositiveFeedbackFlow({
             <Button
               size="lg"
               onClick={() => handlePlatformClick(primaryPlatform)}
-              className="w-full py-4 text-sm font-bold flex items-center justify-center gap-2 bg-[#E76A0E] hover:bg-[#d55f0b] text-white shadow-md cursor-pointer"
+              className="w-full py-4 text-sm font-bold flex items-center justify-center gap-2 bg-[#00d492] hover:bg-[#00bc82] text-slate-950 shadow-md cursor-pointer"
             >
-              <Star size={16} className="fill-white" />
+              <Star size={16} className="fill-slate-950" />
               <span>{primaryPlatform.label}</span>
               <ExternalLink size={14} className="ml-1" />
             </Button>
@@ -130,7 +130,7 @@ export function PositiveFeedbackFlow({
 
           {/* Secondary Platform Buttons if configured */}
           {secondaryPlatforms.length > 0 && (
-            <div className="space-y-2 pt-2 border-t border-orange-200/60 dark:border-orange-900/30">
+            <div className="space-y-2 pt-2 border-t border-[#00d492]/20 dark:border-[#00d492]/20">
               <span className="text-[10px] text-slate-500 dark:text-neutral-400 block font-semibold">
                 Or share on:
               </span>
@@ -155,7 +155,7 @@ export function PositiveFeedbackFlow({
               <button
                 type="button"
                 onClick={handleCopyLink}
-                className="text-[11px] font-semibold text-slate-500 dark:text-neutral-400 hover:text-[#E76A0E] flex items-center gap-1 cursor-pointer"
+                className="text-[11px] font-semibold text-slate-500 dark:text-neutral-400 hover:text-[#00d492] flex items-center gap-1 cursor-pointer"
               >
                 {copied ? <Check size={12} className="text-emerald-500" /> : <Copy size={12} />}
                 {copied ? 'Review link copied to clipboard!' : 'Copy direct review link'}

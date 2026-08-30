@@ -26,7 +26,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
       className="bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#383838] p-5 space-y-4 shadow-sm sticky top-8"
     >
       <div className="flex items-center gap-2 border-b border-slate-200 dark:border-[#383838] pb-3 text-slate-900 dark:text-white font-extrabold text-sm">
-        <ListOrdered size={16} className="text-[#E76A0E]" />
+        <ListOrdered size={16} className="text-[#00d492]" />
         <span>Table of Contents</span>
       </div>
 
@@ -36,9 +36,9 @@ export function TableOfContents({ items }: TableOfContentsProps) {
             <button
               type="button"
               onClick={() => handleScroll(item.id)}
-              className="w-full text-left flex items-start gap-2.5 text-slate-600 dark:text-neutral-400 hover:text-[#E76A0E] dark:hover:text-[#E76A0E] transition-colors py-1 cursor-pointer font-medium"
+              className="w-full text-left flex items-start gap-2.5 text-slate-600 dark:text-neutral-400 hover:text-[#00d492] dark:hover:text-[#00d492] transition-colors py-1 cursor-pointer font-medium"
             >
-              <span className="text-[10px] font-bold text-[#E76A0E] w-4 shrink-0 text-right">
+              <span className="text-[10px] font-bold text-[#00d492] w-4 shrink-0 text-right">
                 {index + 1}.
               </span>
               <span className="leading-snug">{item.title}</span>

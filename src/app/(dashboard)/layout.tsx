@@ -39,7 +39,7 @@ function SidebarLink({ href, icon, children, target, rel, badge }: SidebarLinkPr
       rel={rel}
       className={`flex items-center justify-between px-4 py-3 text-sm font-semibold transition-all duration-150 ${
         isActive
-          ? 'bg-[#E76A0E] text-white font-bold shadow-sm'
+          ? 'bg-[#00d492] text-slate-950 font-bold shadow-sm'
           : 'text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#282828]'
       }`}
     >
@@ -50,7 +50,7 @@ function SidebarLink({ href, icon, children, target, rel, badge }: SidebarLinkPr
       {badge !== undefined && (
         <span
           className={`text-[10px] px-2 py-0.5 font-bold ${
-            isActive ? 'bg-white/20 text-white' : 'bg-slate-200 dark:bg-[#333] text-slate-700 dark:text-neutral-300'
+            isActive ? 'bg-slate-950/15 text-slate-950' : 'bg-slate-200 dark:bg-[#333] text-slate-700 dark:text-neutral-300'
           }`}
         >
           {badge}
@@ -117,7 +117,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <h1 className="font-extrabold text-sm tracking-tight text-slate-900 dark:text-white">
                 LockReview
               </h1>
-              <span className="text-[10px] text-[#E76A0E] uppercase tracking-widest font-bold">
+              <span className="text-[10px] text-[#00d492] uppercase tracking-widest font-bold">
                 Reputation Suite
               </span>
             </div>
@@ -196,7 +196,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 {tenantName}
               </p>
               <span className="text-[10px] text-slate-500 dark:text-neutral-400 flex items-center gap-1 mt-0.5 truncate">
-                <ShieldCheck size={11} className="text-[#E76A0E] shrink-0" />
+                <ShieldCheck size={11} className="text-[#00d492] shrink-0" />
                 <span className="truncate">{userEmail}</span>
               </span>
             </div>

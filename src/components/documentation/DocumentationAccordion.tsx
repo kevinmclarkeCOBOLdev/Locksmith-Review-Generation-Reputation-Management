@@ -38,7 +38,7 @@ export function DocumentationAccordion({ features }: DocumentationAccordionProps
     >
       <div className="flex items-center justify-between border-b border-slate-200 dark:border-[#383838] pb-3.5 text-slate-900 dark:text-white font-extrabold text-sm">
         <div className="flex items-center gap-2">
-          <ListOrdered size={18} className="text-[#E76A0E]" />
+          <ListOrdered size={18} className="text-[#00d492]" />
           <span>Feature &amp; Architecture Index</span>
         </div>
       </div>
@@ -53,10 +53,10 @@ export function DocumentationAccordion({ features }: DocumentationAccordionProps
               <button
                 type="button"
                 onClick={() => toggleSection(item.number)}
-                className="w-full group flex items-center justify-between gap-2 text-slate-800 dark:text-neutral-200 hover:text-[#E76A0E] dark:hover:text-[#E76A0E] transition-colors font-bold text-xs py-1 cursor-pointer text-left"
+                className="w-full group flex items-center justify-between gap-2 text-slate-800 dark:text-neutral-200 hover:text-[#00d492] dark:hover:text-[#00d492] transition-colors font-bold text-xs py-1 cursor-pointer text-left"
               >
                 <div className="flex items-start gap-2.5 flex-1 min-w-0">
-                  <span className="font-mono text-[#E76A0E] w-5 shrink-0 font-extrabold">
+                  <span className="font-mono text-[#00d492] w-5 shrink-0 font-extrabold">
                     {item.number}.
                   </span>
                   <span className="leading-snug group-hover:underline underline-offset-2">
@@ -65,8 +65,8 @@ export function DocumentationAccordion({ features }: DocumentationAccordionProps
                 </div>
                 <ChevronDown
                   size={15}
-                  className={`shrink-0 transition-transform duration-200 text-slate-400 dark:text-neutral-500 group-hover:text-[#E76A0E] ${
-                    isOpen ? 'rotate-180 text-[#E76A0E]' : ''
+                  className={`shrink-0 transition-transform duration-200 text-slate-400 dark:text-neutral-500 group-hover:text-[#00d492] ${
+                    isOpen ? 'rotate-180 text-[#00d492]' : ''
                   }`}
                 />
               </button>
@@ -78,9 +78,9 @@ export function DocumentationAccordion({ features }: DocumentationAccordionProps
                     <li key={sub.number}>
                       <a
                         href="#"
-                        className="group flex items-start gap-2 text-slate-500 dark:text-neutral-400 hover:text-[#E76A0E] dark:hover:text-[#E76A0E] transition-colors py-0.5 text-[11px]"
+                        className="group flex items-start gap-2 text-slate-500 dark:text-neutral-400 hover:text-[#00d492] dark:hover:text-[#00d492] transition-colors py-0.5 text-[11px]"
                       >
-                        <span className="font-mono text-[10px] text-slate-400 dark:text-neutral-500 group-hover:text-[#E76A0E] w-6 shrink-0">
+                        <span className="font-mono text-[10px] text-slate-400 dark:text-neutral-500 group-hover:text-[#00d492] w-6 shrink-0">
                           {sub.number}
                         </span>
                         <span className="leading-tight group-hover:underline underline-offset-2">

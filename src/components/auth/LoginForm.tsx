@@ -140,7 +140,7 @@ export function LoginForm() {
           <p className="text-[10px] font-bold tracking-widest text-slate-400 dark:text-neutral-500 uppercase">
             DEMO LOGIN CREDENTIALS
           </p>
-          <p className="mt-1 text-xs font-mono font-semibold text-[#E76A0E]">
+          <p className="mt-1 text-xs font-mono font-semibold text-[#00d492]">
             admin@yoursite.co.uk / password 123
           </p>
         </div>

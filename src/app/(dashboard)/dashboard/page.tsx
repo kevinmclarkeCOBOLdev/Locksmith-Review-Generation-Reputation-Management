@@ -54,7 +54,7 @@ export default async function DashboardOverviewPage() {
             </Button>
           </Link>
           <Link href="/dashboard/requests">
-            <Button variant="primary" size="sm" className="gap-2 bg-[#E76A0E] hover:bg-[#d05c08] text-white">
+            <Button variant="primary" size="sm" className="gap-2 bg-[#00d492] hover:bg-[#00bc82] text-slate-950 font-bold">
               <Plus size={16} />
               New Review Request
             </Button>
@@ -138,7 +138,7 @@ export default async function DashboardOverviewPage() {
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-neutral-400">
                 Public Review Clicks
               </span>
-              <div className="w-10 h-10 bg-[#E76A0E]/10 text-[#E76A0E] flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#00d492]/10 text-[#00d492] flex items-center justify-center">
                 <ExternalLink size={20} />
               </div>
             </div>
@@ -246,7 +246,7 @@ export default async function DashboardOverviewPage() {
             <CardDescription>Latest customer dispatches from completed jobs</CardDescription>
           </div>
           <Link href="/dashboard/requests">
-            <Button variant="ghost" size="sm" className="gap-1 text-xs text-[#E76A0E]">
+            <Button variant="ghost" size="sm" className="gap-1 text-xs text-[#00d492]">
               View All Requests
               <ArrowUpRight size={14} />
             </Button>
@@ -260,7 +260,7 @@ export default async function DashboardOverviewPage() {
                 No review requests created yet
               </p>
               <Link href="/dashboard/requests">
-                <Button size="sm" variant="primary" className="bg-[#E76A0E] text-white">
+                <Button size="sm" variant="primary" className="bg-[#00d492] hover:bg-[#00bc82] text-slate-950 font-bold">
                   Create First Review Request
                 </Button>
               </Link>
@@ -341,7 +341,7 @@ export default async function DashboardOverviewPage() {
             <CardDescription>Verified feedback submissions and private customer resolution</CardDescription>
           </div>
           <Link href="/dashboard/feedback">
-            <Button variant="ghost" size="sm" className="gap-1 text-xs text-[#E76A0E]">
+            <Button variant="ghost" size="sm" className="gap-1 text-xs text-[#00d492]">
               Feedback Inbox
               <ArrowUpRight size={14} />
             </Button>

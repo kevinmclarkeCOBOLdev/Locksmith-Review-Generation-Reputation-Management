@@ -56,7 +56,7 @@ export function AnalyticsDashboardManager({ initialData }: AnalyticsDashboardMan
       {/* Time Range Selector & Controls */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white dark:bg-[#1a1a1a] p-4 border border-slate-200 dark:border-[#333333]">
         <div className="flex items-center gap-2">
-          <Clock size={16} className="text-[#E76A0E]" />
+          <Clock size={16} className="text-[#00d492]" />
           <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
             Reporting Period:
           </span>
@@ -112,7 +112,7 @@ export function AnalyticsDashboardManager({ initialData }: AnalyticsDashboardMan
             <span className="text-3xl font-black text-slate-900 dark:text-white">
               {metrics.sentRequests}
             </span>
-            <MessageSquare size={20} className="text-[#E76A0E]" />
+            <MessageSquare size={20} className="text-[#00d492]" />
           </div>
           <p className="text-[11px] text-slate-500 dark:text-neutral-400 mt-2">
             {metrics.totalRequests} total created ({metrics.failedRequests} failed)
@@ -178,14 +178,14 @@ export function AnalyticsDashboardManager({ initialData }: AnalyticsDashboardMan
           </div>
           <div className="flex items-baseline justify-between mt-3">
             <div className="flex items-baseline gap-1.5">
-              <span className="text-3xl font-black text-[#E76A0E]">
+              <span className="text-3xl font-black text-[#00d492]">
                 {metrics.publicClickCount}
               </span>
               <span className="text-xs font-bold text-slate-400">
                 ({metrics.publicClickRate}%)
               </span>
             </div>
-            <ExternalLink size={20} className="text-[#E76A0E]" />
+            <ExternalLink size={20} className="text-[#00d492]" />
           </div>
           <p className="text-[11px] text-slate-500 dark:text-neutral-400 mt-2">
             One-tap Google Reviews conversion
@@ -199,7 +199,7 @@ export function AnalyticsDashboardManager({ initialData }: AnalyticsDashboardMan
         <Card className="border border-slate-200 dark:border-[#333333] p-6 bg-white dark:bg-[#1a1a1a] space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
-              <BarChart3 size={16} className="text-[#E76A0E]" />
+              <BarChart3 size={16} className="text-[#00d492]" />
               <span>Rating Distribution</span>
             </h3>
             <span className="text-xs text-slate-400">
@@ -287,7 +287,7 @@ export function AnalyticsDashboardManager({ initialData }: AnalyticsDashboardMan
                   className="flex items-center justify-between p-2 bg-slate-50 dark:bg-[#202020] border border-slate-200 dark:border-[#2e2e2e]"
                 >
                   <div className="flex items-center gap-2">
-                    <ExternalLink size={12} className="text-[#E76A0E]" />
+                    <ExternalLink size={12} className="text-[#00d492]" />
                     <span className="font-semibold text-slate-800 dark:text-neutral-200">{p.label}</span>
                   </div>
                   <div className="flex items-center gap-1.5 font-bold">
@@ -306,7 +306,7 @@ export function AnalyticsDashboardManager({ initialData }: AnalyticsDashboardMan
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
-              <Layers size={16} className="text-[#E76A0E]" />
+              <Layers size={16} className="text-[#00d492]" />
               <span>Channel Performance & Conversion</span>
             </h3>
             <p className="text-xs text-slate-500 dark:text-neutral-400 mt-0.5">
@@ -331,7 +331,7 @@ export function AnalyticsDashboardManager({ initialData }: AnalyticsDashboardMan
               {channelPerformance.map((ch) => (
                 <tr key={ch.channel} className="hover:bg-slate-50/60 dark:hover:bg-[#202020]">
                   <td className="py-3 px-3 font-bold uppercase flex items-center gap-2">
-                    {ch.channel === 'sms' && <Smartphone size={14} className="text-[#E76A0E]" />}
+                    {ch.channel === 'sms' && <Smartphone size={14} className="text-[#00d492]" />}
                     {ch.channel === 'email' && <Mail size={14} className="text-blue-500" />}
                     {ch.channel === 'both' && <MessageSquare size={14} className="text-emerald-500" />}
                     <span>{ch.channel}</span>

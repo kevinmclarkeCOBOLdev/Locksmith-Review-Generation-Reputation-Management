@@ -19,7 +19,7 @@ const RATING_LABELS: Record<number, { title: string; subtitle: string; color: st
   2: {
     title: 'Poor',
     subtitle: 'Below expectations',
-    color: 'text-orange-500 dark:text-orange-400',
+    color: 'text-amber-600 dark:text-amber-500',
   },
   3: {
     title: 'Average',

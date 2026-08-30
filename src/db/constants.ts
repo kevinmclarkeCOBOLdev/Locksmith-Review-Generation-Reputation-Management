@@ -13,7 +13,7 @@ export const DEFAULT_EMAIL_REVIEW_TEMPLATE = `
     Thank you for trusting <strong>{business_name}</strong> for your locksmith service. Customer satisfaction is our highest priority, and your feedback helps us continually improve.
   </p>
   <div style="text-align: center; margin: 30px 0;">
-    <a href="{review_link}" style="background-color: #E76A0E; color: #ffffff; padding: 14px 28px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block; font-size: 16px;">
+    <a href="{review_link}" style="background-color: #00d492; color: #022c22; padding: 14px 28px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block; font-size: 16px;">
       Leave Your Feedback
     </a>
   </div>

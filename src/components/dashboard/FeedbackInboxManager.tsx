@@ -164,12 +164,12 @@ export function FeedbackInboxManager({
           </span>
           <div className="flex items-baseline justify-between mt-2">
             <div className="flex items-center gap-1.5">
-              <span className="text-2xl font-black text-[#E76A0E]">
+              <span className="text-2xl font-black text-[#00d492]">
                 {summary.platformClickCount}
               </span>
               <span className="text-xs text-slate-400">({summary.platformClickRate}%)</span>
             </div>
-            <ExternalLink size={18} className="text-[#E76A0E]" />
+            <ExternalLink size={18} className="text-[#00d492]" />
           </div>
         </Card>
       </div>
@@ -293,7 +293,7 @@ export function FeedbackInboxManager({
       <Card className="border border-slate-200 dark:border-[#333333] bg-white dark:bg-[#1a1a1a] overflow-hidden">
         {isLoading && items.length === 0 ? (
           <div className="p-16 text-center text-slate-500 space-y-3">
-            <div className="w-8 h-8 border-2 border-[#E76A0E] border-t-transparent animate-spin mx-auto" />
+            <div className="w-8 h-8 border-2 border-[#00d492] border-t-transparent animate-spin mx-auto" />
             <p className="text-xs">Loading customer feedback...</p>
           </div>
         ) : items.length === 0 ? (

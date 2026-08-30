@@ -14,8 +14,8 @@
   --border-subtle: #e2e8f0;
   --text-main: #0f172a;
   --text-muted: #64748b;
-  --accent-orange: #E76A0E;
-  --accent-orange-hover: #d15d0b;
+  --accent-green: #00d492;
+  --accent-green-hover: #00bc82;
 }
 
 html.dark {
@@ -25,34 +25,34 @@ html.dark {
   --border-subtle: #383838;
   --text-main: #f4f4f5;
   --text-muted: #a1a1aa;
-  --accent-orange: #E76A0E;
-  --accent-orange-hover: #d15d0b;
+  --accent-green: #00d492;
+  --accent-green-hover: #00bc82;
 }
 
 @theme {
-  --color-brand-50: #fff9f5;
-  --color-brand-100: #ffeedd;
-  --color-brand-200: #ffd8b5;
-  --color-brand-300: #E76A0E;
-  --color-brand-400: #E76A0E;
-  --color-brand-500: #E76A0E;
-  --color-brand-600: #E76A0E;
-  --color-brand-700: #E76A0E;
-  --color-brand-800: #d15d0b;
-  --color-brand-900: #71320e;
-  --color-brand-950: #3d1704;
+  --color-brand-50: #e6fbf4;
+  --color-brand-100: #cbf6e6;
+  --color-brand-200: #99eed3;
+  --color-brand-300: #66e6bd;
+  --color-brand-400: #33dda7;
+  --color-brand-500: #00d492;
+  --color-brand-600: #00bc82;
+  --color-brand-700: #009e6d;
+  --color-brand-800: #007f57;
+  --color-brand-900: #006143;
+  --color-brand-950: #003726;
 
-  --color-emerald-50: #fff9f5;
-  --color-emerald-100: #ffeedd;
-  --color-emerald-200: #ffd8b5;
-  --color-emerald-300: #E76A0E;
-  --color-emerald-400: #E76A0E;
-  --color-emerald-500: #E76A0E;
-  --color-emerald-600: #E76A0E;
-  --color-emerald-700: #E76A0E;
-  --color-emerald-800: #d15d0b;
-  --color-emerald-900: #71320e;
-  --color-emerald-950: #3d1704;
+  --color-emerald-50: #e6fbf4;
+  --color-emerald-100: #cbf6e6;
+  --color-emerald-200: #99eed3;
+  --color-emerald-300: #66e6bd;
+  --color-emerald-400: #33dda7;
+  --color-emerald-500: #00d492;
+  --color-emerald-600: #00bc82;
+  --color-emerald-700: #009e6d;
+  --color-emerald-800: #007f57;
+  --color-emerald-900: #006143;
+  --color-emerald-950: #003726;
 }
 
 body {
@@ -64,19 +64,19 @@ body {
 
 /* Custom button styling helper */
 .btn-brand {
-  background-color: #E76A0E;
-  color: #ffffff;
+  background-color: #00d492;
+  color: #022c22;
   font-weight: 700;
   transition: all 0.2s ease;
 }
 .btn-brand:hover {
-  background-color: #d15d0b;
+  background-color: #00bc82;
 }
 
 html.dark .btn-brand {
-  background-color: #E76A0E;
-  color: #ffffff;
+  background-color: #00d492;
+  color: #022c22;
 }
 html.dark .btn-brand:hover {
-  background-color: #d15d0b;
+  background-color: #00bc82;
 }

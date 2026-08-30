@@ -12,11 +12,11 @@ export function PolicySection({ id, number, title, icon, children }: PolicySecti
   return (
     <section id={id} className="scroll-mt-28 space-y-4 text-left">
       <div className="flex items-center gap-3">
-        <span className="w-8 h-8 bg-[#E76A0E]/15 border border-[#E76A0E]/30 text-[#E76A0E] font-extrabold text-xs flex items-center justify-center shrink-0">
+        <span className="w-8 h-8 bg-[#00d492]/15 border border-[#00d492]/30 text-[#00d492] font-extrabold text-xs flex items-center justify-center shrink-0">
           {number}
         </span>
         <div className="flex items-center gap-2">
-          {icon && <span className="text-[#E76A0E]">{icon}</span>}
+          {icon && <span className="text-[#00d492]">{icon}</span>}
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {title}
           </h2>

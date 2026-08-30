@@ -31,7 +31,7 @@ export default async function PublicCustomerReviewPage({ params }: PublicReviewP
             />
           </div>
         ) : (
-          <div className="w-12 h-12 bg-[#E76A0E] text-white flex items-center justify-center font-black text-base mx-auto mb-2 shadow-md">
+          <div className="w-12 h-12 bg-[#00d492] text-slate-950 flex items-center justify-center font-black text-base mx-auto mb-2 shadow-md">
             {businessName.substring(0, 2).toUpperCase()}
           </div>
         )}

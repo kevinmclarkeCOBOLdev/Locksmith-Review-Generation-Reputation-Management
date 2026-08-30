@@ -221,7 +221,7 @@ export function ReviewRequestsManager({
             value={search}
             onChange={handleSearchChange}
             placeholder="Search by customer name, phone, email, or service..."
-            className="w-full pl-9 pr-3 py-2 bg-transparent text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none border border-slate-200 dark:border-[#333333] focus:border-[#E76A0E]"
+            className="w-full pl-9 pr-3 py-2 bg-transparent text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none border border-slate-200 dark:border-[#333333] focus:border-[#00d492]"
           />
         </div>
 
@@ -231,7 +231,7 @@ export function ReviewRequestsManager({
             value={statusFilter}
             onChange={handleStatusChange}
             aria-label="Filter by status"
-            className="w-full px-3 py-2 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#333333] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#E76A0E]"
+            className="w-full px-3 py-2 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#333333] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#00d492]"
           >
             <option value="all">All Statuses</option>
             <option value="pending">Pending</option>
@@ -251,7 +251,7 @@ export function ReviewRequestsManager({
             value={channelFilter}
             onChange={handleChannelChange}
             aria-label="Filter by channel"
-            className="w-full px-3 py-2 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#333333] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#E76A0E]"
+            className="w-full px-3 py-2 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#333333] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#00d492]"
           >
             <option value="all">All Channels</option>
             <option value="sms">SMS Only</option>
@@ -267,7 +267,7 @@ export function ReviewRequestsManager({
             className="p-2 shrink-0"
             title="Refresh List"
           >
-            <RefreshCw size={14} className={isLoading ? 'animate-spin text-[#E76A0E]' : ''} />
+            <RefreshCw size={14} className={isLoading ? 'animate-spin text-[#00d492]' : ''} />
           </Button>
         </div>
       </div>
@@ -291,7 +291,7 @@ export function ReviewRequestsManager({
               {isLoading ? (
                 <tr>
                   <td colSpan={7} className="py-12 text-center text-slate-400">
-                    <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-[#E76A0E]" />
+                    <RefreshCw size={20} className="animate-spin mx-auto mb-2 text-[#00d492]" />
                     <span>Loading review requests...</span>
                   </td>
                 </tr>
@@ -328,9 +328,9 @@ export function ReviewRequestsManager({
                     </td>
                     <td className="py-3.5 px-4">
                       <span className="font-bold uppercase text-[10px] inline-flex items-center gap-1 text-slate-700 dark:text-neutral-300">
-                        {req.channel === 'sms' && <Smartphone size={12} className="text-[#E76A0E]" />}
-                        {req.channel === 'email' && <Mail size={12} className="text-[#E76A0E]" />}
-                        {req.channel === 'both' && <MessageSquare size={12} className="text-[#E76A0E]" />}
+                        {req.channel === 'sms' && <Smartphone size={12} className="text-[#00d492]" />}
+                        {req.channel === 'email' && <Mail size={12} className="text-[#00d492]" />}
+                        {req.channel === 'both' && <MessageSquare size={12} className="text-[#00d492]" />}
                         {req.channel}
                       </span>
                     </td>
@@ -349,13 +349,13 @@ export function ReviewRequestsManager({
                       <button
                         onClick={() => handleResend(req.id, req.customerName)}
                         disabled={resendingId === req.id}
-                        className="text-xs font-bold text-slate-600 dark:text-neutral-400 hover:text-[#E76A0E] hover:underline cursor-pointer disabled:opacity-50"
+                        className="text-xs font-bold text-slate-600 dark:text-neutral-400 hover:text-[#00d492] hover:underline cursor-pointer disabled:opacity-50"
                       >
                         {resendingId === req.id ? 'Sending...' : 'Resend'}
                       </button>
                       <button
                         onClick={() => setSelectedRequestForDetail(req)}
-                        className="text-xs font-bold text-[#E76A0E] hover:underline cursor-pointer"
+                        className="text-xs font-bold text-[#00d492] hover:underline cursor-pointer"
                       >
                         Details
                       </button>

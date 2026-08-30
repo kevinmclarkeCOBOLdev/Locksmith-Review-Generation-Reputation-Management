@@ -112,7 +112,7 @@ export function ReviewRequestDetailModal({
         <div className="p-3 bg-slate-50 dark:bg-[#202020] border border-slate-200 dark:border-[#333333] space-y-3">
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-[#2e2e2e] pb-2 font-bold text-slate-900 dark:text-white">
             <span className="flex items-center gap-1.5">
-              <User size={14} className="text-[#E76A0E]" /> Customer Details
+              <User size={14} className="text-[#00d492]" /> Customer Details
             </span>
             <span className="text-[11px] font-medium text-slate-500 dark:text-neutral-400">
               Shared MySQL Record

@@ -247,7 +247,7 @@ export function CreateReviewRequestModal({
       maxWidth="4xl"
       title={
         <div className="flex items-center gap-2">
-          <Sparkles className="text-[#E76A0E]" size={20} />
+          <Sparkles className="text-[#00d492]" size={20} />
           <span>Create Review Request</span>
         </div>
       }
@@ -268,7 +268,7 @@ export function CreateReviewRequestModal({
             <div>
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-5 h-5 bg-[#E76A0E] text-white flex items-center justify-center text-[11px] font-black rounded-none">
+                  <span className="w-5 h-5 bg-[#00d492] text-slate-950 flex items-center justify-center text-[11px] font-black rounded-none">
                     1
                   </span>
                   Select Customer / Job
@@ -277,7 +277,7 @@ export function CreateReviewRequestModal({
                   <button
                     type="button"
                     onClick={() => setSelectedLead(null)}
-                    className="text-[11px] font-bold text-[#E76A0E] hover:underline cursor-pointer"
+                    className="text-[11px] font-bold text-[#00d492] hover:underline cursor-pointer"
                   >
                     Change Customer
                   </button>
@@ -301,7 +301,7 @@ export function CreateReviewRequestModal({
                           fetchLeads(e.target.value, statusFilter);
                         }}
                         placeholder="Search name, phone, email, service..."
-                        className="w-full pl-8 pr-3 py-1.5 bg-white dark:bg-[#1a1a1a] border border-slate-300 dark:border-[#3a3a3a] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#E76A0E]"
+                        className="w-full pl-8 pr-3 py-1.5 bg-white dark:bg-[#1a1a1a] border border-slate-300 dark:border-[#3a3a3a] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#00d492]"
                       />
                     </div>
                     <select
@@ -311,7 +311,7 @@ export function CreateReviewRequestModal({
                         fetchLeads(searchQuery, e.target.value);
                       }}
                       aria-label="Filter leads by status"
-                      className="px-2 py-1.5 bg-white dark:bg-[#1a1a1a] border border-slate-300 dark:border-[#3a3a3a] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#E76A0E]"
+                      className="px-2 py-1.5 bg-white dark:bg-[#1a1a1a] border border-slate-300 dark:border-[#3a3a3a] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#00d492]"
                     >
                       <option value="all">All Statuses</option>
                       <option value="completed">Completed Only</option>
@@ -323,7 +323,7 @@ export function CreateReviewRequestModal({
                   <div className="max-h-48 overflow-y-auto divide-y divide-slate-200 dark:divide-[#2e2e2e] border border-slate-200 dark:border-[#333333] bg-white dark:bg-[#181818]">
                     {isLoadingLeads ? (
                       <div className="p-6 text-center text-xs text-slate-400">
-                        <RefreshCw size={16} className="animate-spin mx-auto mb-2 text-[#E76A0E]" />
+                        <RefreshCw size={16} className="animate-spin mx-auto mb-2 text-[#00d492]" />
                         Loading customers from database...
                       </div>
                     ) : leads.length === 0 ? (
@@ -335,7 +335,7 @@ export function CreateReviewRequestModal({
                         <div
                           key={lead.id}
                           onClick={() => handleSelectLead(lead)}
-                          className="p-2.5 hover:bg-orange-50 dark:hover:bg-[#252525] cursor-pointer flex items-center justify-between gap-3 transition-colors"
+                          className="p-2.5 hover:bg-[#00d492]/10 dark:hover:bg-[#252525] cursor-pointer flex items-center justify-between gap-3 transition-colors"
                         >
                           <div className="min-w-0">
                             <div className="flex items-center gap-2">
@@ -407,7 +407,7 @@ export function CreateReviewRequestModal({
             {/* Step 2: Channel Selection */}
             <div>
               <label className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5 mb-2">
-                <span className="w-5 h-5 bg-[#E76A0E] text-white flex items-center justify-center text-[11px] font-black rounded-none">
+                <span className="w-5 h-5 bg-[#00d492] text-slate-950 flex items-center justify-center text-[11px] font-black rounded-none">
                   2
                 </span>
                 Delivery Channel
@@ -419,12 +419,12 @@ export function CreateReviewRequestModal({
                   onClick={() => setChannel('sms')}
                   className={`p-3 text-left border cursor-pointer transition-all ${
                     channel === 'sms'
-                      ? 'border-[#E76A0E] bg-orange-50/40 dark:bg-[#E76A0E]/10 text-slate-900 dark:text-white ring-1 ring-[#E76A0E]'
+                      ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/10 text-slate-900 dark:text-white ring-1 ring-[#00d492]'
                       : 'border-slate-300 dark:border-[#333333] hover:border-slate-400 dark:hover:border-[#444] text-slate-700 dark:text-neutral-300'
                   }`}
                 >
                   <div className="flex items-center gap-2 font-bold text-xs mb-1">
-                    <Smartphone size={15} className="text-[#E76A0E]" />
+                    <Smartphone size={15} className="text-[#00d492]" />
                     SMS
                   </div>
                   <p className="text-[10px] text-slate-500 dark:text-neutral-400">
@@ -437,12 +437,12 @@ export function CreateReviewRequestModal({
                   onClick={() => setChannel('email')}
                   className={`p-3 text-left border cursor-pointer transition-all ${
                     channel === 'email'
-                      ? 'border-[#E76A0E] bg-orange-50/40 dark:bg-[#E76A0E]/10 text-slate-900 dark:text-white ring-1 ring-[#E76A0E]'
+                      ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/10 text-slate-900 dark:text-white ring-1 ring-[#00d492]'
                       : 'border-slate-300 dark:border-[#333333] hover:border-slate-400 dark:hover:border-[#444] text-slate-700 dark:text-neutral-300'
                   }`}
                 >
                   <div className="flex items-center gap-2 font-bold text-xs mb-1">
-                    <Mail size={15} className="text-[#E76A0E]" />
+                    <Mail size={15} className="text-[#00d492]" />
                     Email
                   </div>
                   <p className="text-[10px] text-slate-500 dark:text-neutral-400">
@@ -455,12 +455,12 @@ export function CreateReviewRequestModal({
                   onClick={() => setChannel('both')}
                   className={`p-3 text-left border cursor-pointer transition-all ${
                     channel === 'both'
-                      ? 'border-[#E76A0E] bg-orange-50/40 dark:bg-[#E76A0E]/10 text-slate-900 dark:text-white ring-1 ring-[#E76A0E]'
+                      ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/10 text-slate-900 dark:text-white ring-1 ring-[#00d492]'
                       : 'border-slate-300 dark:border-[#333333] hover:border-slate-400 dark:hover:border-[#444] text-slate-700 dark:text-neutral-300'
                   }`}
                 >
                   <div className="flex items-center gap-2 font-bold text-xs mb-1">
-                    <MessageSquare size={15} className="text-[#E76A0E]" />
+                    <MessageSquare size={15} className="text-[#00d492]" />
                     Both
                   </div>
                   <p className="text-[10px] text-slate-500 dark:text-neutral-400">
@@ -473,7 +473,7 @@ export function CreateReviewRequestModal({
             {/* Step 3: Template & Custom Message */}
             <div className="space-y-3">
               <label className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-5 h-5 bg-[#E76A0E] text-white flex items-center justify-center text-[11px] font-black rounded-none">
+                <span className="w-5 h-5 bg-[#00d492] text-slate-950 flex items-center justify-center text-[11px] font-black rounded-none">
                   3
                 </span>
                 Template & Message Copy
@@ -502,7 +502,7 @@ export function CreateReviewRequestModal({
                     type="checkbox"
                     checked={useCustomMessage}
                     onChange={(e) => setUseCustomMessage(e.target.checked)}
-                    className="accent-[#E76A0E] cursor-pointer"
+                    className="accent-[#00d492] cursor-pointer"
                   />
                   <span>Customize message copy for this request</span>
                 </label>
@@ -536,7 +536,7 @@ export function CreateReviewRequestModal({
                     type="checkbox"
                     checked={allowDuplicate}
                     onChange={(e) => setAllowDuplicate(e.target.checked)}
-                    className="accent-[#E76A0E] cursor-pointer"
+                    className="accent-[#00d492] cursor-pointer"
                   />
                   <span>I understand and want to create a new review request anyway.</span>
                 </label>
@@ -547,7 +547,7 @@ export function CreateReviewRequestModal({
           {/* RIGHT COLUMN: Live Dynamic Preview */}
           <div className="lg:col-span-5 flex flex-col">
             <label className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5 mb-2">
-              <Sparkles size={14} className="text-[#E76A0E]" />
+              <Sparkles size={14} className="text-[#00d492]" />
               Live Request Preview
             </label>
 
@@ -568,7 +568,7 @@ export function CreateReviewRequestModal({
                     </div>
 
                     {/* SMS Bubble */}
-                    <div className="bg-[#E76A0E] text-white p-3 rounded-none text-xs leading-relaxed shadow-sm">
+                    <div className="bg-[#00d492] text-slate-950 p-3 rounded-none text-xs leading-relaxed font-medium shadow-sm">
                       {livePreview.body}
                     </div>
 
