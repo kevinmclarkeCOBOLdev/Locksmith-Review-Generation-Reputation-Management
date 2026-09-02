@@ -19,8 +19,8 @@ export const documentationFeatures: DocTocItem[] = [
     number: '1',
     title: 'Review Request Generation & Dispatch Engine',
     subItems: [
-      { number: '1.1', title: 'Multi-Channel Dispatch (SMS, Email, Both)' },
-      { number: '1.2', title: 'Customer Lead Selection from Shared MySQL' },
+      { number: '1.1', title: 'Automated Email Dispatch Engine' },
+      { number: '1.2', title: 'Customer Lead Selection from Shared Database' },
       { number: '1.3', title: 'High-Entropy Cryptographic Token URLs (/review/[token])' },
       { number: '1.4', title: 'Dynamic Template Interpolation ({customer_name}, {business_name}, {review_link})' },
       { number: '1.5', title: '30-Day Anti-Fatigue Customer Deduplication Guard' },
@@ -63,9 +63,9 @@ export const documentationFeatures: DocTocItem[] = [
     number: '5',
     title: 'Reputation Analytics & Evidence-Based Reporting',
     subItems: [
-      { number: '5.1', title: 'Deterministic MySQL Math (Response Rate, Avg Rating, Positive Ratio)' },
+      { number: '5.1', title: 'Deterministic Database Math (Response Rate, Avg Rating, Positive Ratio)' },
       { number: '5.2', title: '5-Star Distribution Visual Breakdown' },
-      { number: '5.3', title: 'SMS vs. Email Delivery & Channel Conversion Rates' },
+      { number: '5.3', title: 'Email Delivery & Conversion Performance Rates' },
       { number: '5.4', title: 'Dynamic Time-Range Scoping (7 Days, 30 Days, All-Time)' },
       { number: '5.5', title: 'Defensive Zero-Division Safe Calculations' },
     ],
@@ -87,16 +87,16 @@ export const documentationFeatures: DocTocItem[] = [
     subItems: [
       { number: '7.1', title: 'Google Business Profile Direct Link Configuration' },
       { number: '7.2', title: 'Secondary Platforms (Trustpilot UK, Checkatrade, Facebook)' },
-      { number: '7.3', title: 'Dynamic SMS Template Customizer with Live Preview' },
-      { number: '7.4', title: 'Dynamic Email Subject & HTML Body Template Editor' },
+      { number: '7.3', title: 'Dynamic Message Variable Tokens ({customer_name}, {business_name}, {review_link})' },
+      { number: '7.4', title: 'Dynamic Email Subject & HTML Body Template Editor with Live Preview' },
       { number: '7.5', title: 'Tenant Configuration Audit Logging' },
     ],
   },
   {
     number: '8',
-    title: 'Shared MySQL Database Architecture & Security',
+    title: 'Shared Database Architecture & Security',
     subItems: [
-      { number: '8.1', title: 'Dual Independent Apps on One Shared MySQL Instance' },
+      { number: '8.1', title: 'Dual Independent Apps on One Shared Database Instance' },
       { number: '8.2', title: 'Shared Tables (tenants, users, leads, quotes, consents, audit_logs)' },
       { number: '8.3', title: 'LockReview-Owned Tables (review_requests, review_feedback, settings, templates)' },
       { number: '8.4', title: 'Server-Side JWT Tenant Isolation & Edge Route Protection' },
@@ -282,7 +282,7 @@ export function DocumentationView() {
               <div className="pt-3 border-t border-[#00d492]/20 flex flex-wrap items-center gap-4 text-xs text-slate-600 dark:text-neutral-300">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 size={14} className="text-[#00d492] shrink-0" />
-                  <span>Dedicated MySQL database setup</span>
+                  <span>Dedicated Database setup</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 size={14} className="text-[#00d492] shrink-0" />
@@ -311,7 +311,7 @@ export function DocumentationView() {
                     <span>🚀 Automated Review Triggers</span>
                   </div>
                   <div className="text-[11px] text-slate-500 dark:text-neutral-400 mt-1 leading-relaxed">
-                    Synchronizes completed jobs from LockQuote and dispatches SMS/Email review invitations automatically.
+                    Synchronizes completed jobs from LockQuote and dispatches Email review invitations automatically.
                   </div>
                 </div>
 
@@ -338,7 +338,7 @@ export function DocumentationView() {
                     <span>📊 Evidence-Based Analytics</span>
                   </div>
                   <div className="text-[11px] text-slate-500 dark:text-neutral-400 mt-1 leading-relaxed">
-                    Deterministic MySQL calculations for response rates, star distribution breakdown, and channel conversions.
+                    Deterministic Database calculations for response rates, star distribution breakdown, and conversion rates.
                   </div>
                 </div>
               </div>

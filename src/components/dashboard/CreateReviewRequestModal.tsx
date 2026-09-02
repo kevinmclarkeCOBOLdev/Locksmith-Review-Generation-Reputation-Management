@@ -43,7 +43,7 @@ export function CreateReviewRequestModal({
 
   // Selected State
   const [selectedLead, setSelectedLead] = useState<EligibleLeadItem | null>(null);
-  const [channel, setChannel] = useState<DeliveryChannel>('sms');
+  const [channel, setChannel] = useState<DeliveryChannel>('email');
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>('');
   const [customMessage, setCustomMessage] = useState<string>('');
   const [useCustomMessage, setUseCustomMessage] = useState(false);
@@ -117,12 +117,8 @@ export function CreateReviewRequestModal({
     setSelectedLead(lead);
     setErrorMessage(null);
 
-    // Auto-adjust channel based on available contacts
-    if (lead.phone && !lead.email) {
-      setChannel('sms');
-    } else if (lead.email && !lead.phone) {
-      setChannel('email');
-    }
+    // Default to email delivery channel (SMS and Both are disabled in current version)
+    setChannel('email');
 
     if (lead.hasActiveRequest) {
       setDuplicateWarning(
@@ -416,19 +412,22 @@ export function CreateReviewRequestModal({
               <div className="grid grid-cols-3 gap-2">
                 <button
                   type="button"
-                  onClick={() => setChannel('sms')}
-                  className={`p-3 text-left border cursor-pointer transition-all ${
-                    channel === 'sms'
-                      ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/10 text-slate-900 dark:text-white ring-1 ring-[#00d492]'
-                      : 'border-slate-300 dark:border-[#333333] hover:border-slate-400 dark:hover:border-[#444] text-slate-700 dark:text-neutral-300'
-                  }`}
+                  disabled
+                  aria-disabled="true"
+                  title="SMS delivery will be enabled in the next version of LockReview"
+                  className="p-3 text-left border transition-all border-slate-200 dark:border-[#262626] bg-slate-100/60 dark:bg-[#151515] text-slate-400 dark:text-neutral-500 opacity-50 cursor-not-allowed select-none"
                 >
-                  <div className="flex items-center gap-2 font-bold text-xs mb-1">
-                    <Smartphone size={15} className="text-[#00d492]" />
-                    SMS
+                  <div className="flex items-center justify-between gap-2 font-bold text-xs mb-1">
+                    <div className="flex items-center gap-2">
+                      <Smartphone size={15} className="text-slate-400 dark:text-neutral-500" />
+                      <span>SMS</span>
+                    </div>
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-slate-200/70 dark:bg-[#262626] text-slate-500 dark:text-neutral-400">
+                      v2
+                    </span>
                   </div>
-                  <p className="text-[10px] text-slate-500 dark:text-neutral-400">
-                    Highest open & click rate (Direct to mobile)
+                  <p className="text-[10px] text-slate-400 dark:text-neutral-500">
+                    Direct to mobile (Next release)
                   </p>
                 </button>
 
@@ -452,19 +451,22 @@ export function CreateReviewRequestModal({
 
                 <button
                   type="button"
-                  onClick={() => setChannel('both')}
-                  className={`p-3 text-left border cursor-pointer transition-all ${
-                    channel === 'both'
-                      ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/10 text-slate-900 dark:text-white ring-1 ring-[#00d492]'
-                      : 'border-slate-300 dark:border-[#333333] hover:border-slate-400 dark:hover:border-[#444] text-slate-700 dark:text-neutral-300'
-                  }`}
+                  disabled
+                  aria-disabled="true"
+                  title="Multi-channel delivery will be enabled in the next version of LockReview"
+                  className="p-3 text-left border transition-all border-slate-200 dark:border-[#262626] bg-slate-100/60 dark:bg-[#151515] text-slate-400 dark:text-neutral-500 opacity-50 cursor-not-allowed select-none"
                 >
-                  <div className="flex items-center gap-2 font-bold text-xs mb-1">
-                    <MessageSquare size={15} className="text-[#00d492]" />
-                    Both
+                  <div className="flex items-center justify-between gap-2 font-bold text-xs mb-1">
+                    <div className="flex items-center gap-2">
+                      <MessageSquare size={15} className="text-slate-400 dark:text-neutral-500" />
+                      <span>Both</span>
+                    </div>
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-slate-200/70 dark:bg-[#262626] text-slate-500 dark:text-neutral-400">
+                      v2
+                    </span>
                   </div>
-                  <p className="text-[10px] text-slate-500 dark:text-neutral-400">
-                    Dispatches via SMS and Email
+                  <p className="text-[10px] text-slate-400 dark:text-neutral-500">
+                    SMS and Email (Next release)
                   </p>
                 </button>
               </div>

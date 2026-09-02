@@ -49,10 +49,8 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
   const [isSavingTemplate, setIsSavingTemplate] = useState(false);
   const [templateToast, setTemplateToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
-  // Rule state
-  const [defaultChannel, setDefaultChannel] = useState<'sms' | 'email' | 'both'>(
-    initialSettings.preferences.defaultChannel
-  );
+  // Rule state (SMS & Both disabled for v1, defaulting to email)
+  const [defaultChannel, setDefaultChannel] = useState<'sms' | 'email' | 'both'>('email');
   const [expirationDays, setExpirationDays] = useState<number>(initialSettings.preferences.expirationDays);
   const [isSavingRules, setIsSavingRules] = useState(false);
   const [rulesToast, setRulesToast] = useState<string | null>(null);
@@ -331,23 +329,50 @@ export function ReputationSettingsManager({ initialSettings }: ReputationSetting
                 When creating review requests without explicit channel override, dispatch via:
               </p>
               <div className="grid grid-cols-3 gap-3 pt-1">
-                {(['sms', 'email', 'both'] as const).map((ch) => (
-                  <button
-                    key={ch}
-                    type="button"
-                    onClick={() => setDefaultChannel(ch)}
-                    className={`p-3 border font-bold flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer ${
-                      defaultChannel === ch
-                        ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/20 text-[#00d492]'
-                        : 'border-slate-300 dark:border-[#3a3a3a] bg-white dark:bg-[#161616] text-slate-700 dark:text-neutral-300'
-                    }`}
-                  >
-                    {ch === 'sms' && <Smartphone size={15} />}
-                    {ch === 'email' && <Mail size={15} />}
-                    {ch === 'both' && <MessageSquare size={15} />}
-                    <span>{ch}</span>
-                  </button>
-                ))}
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  title="SMS delivery will be enabled in the next version of LockReview"
+                  className="p-3 border font-bold flex items-center justify-between gap-2 uppercase tracking-wider transition-all border-slate-200 dark:border-[#262626] bg-slate-100/60 dark:bg-[#151515] text-slate-400 dark:text-neutral-500 opacity-50 cursor-not-allowed select-none"
+                >
+                  <div className="flex items-center gap-2">
+                    <Smartphone size={15} className="text-slate-400 dark:text-neutral-500" />
+                    <span>SMS</span>
+                  </div>
+                  <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-slate-200/70 dark:bg-[#262626] text-slate-500 dark:text-neutral-400">
+                    v2
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setDefaultChannel('email')}
+                  className={`p-3 border font-bold flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer transition-all ${
+                    defaultChannel === 'email'
+                      ? 'border-[#00d492] bg-[#00d492]/10 dark:bg-[#00d492]/20 text-[#00d492] ring-1 ring-[#00d492]'
+                      : 'border-slate-300 dark:border-[#3a3a3a] bg-white dark:bg-[#161616] text-slate-700 dark:text-neutral-300 hover:border-slate-400'
+                  }`}
+                >
+                  <Mail size={15} className={defaultChannel === 'email' ? 'text-[#00d492]' : 'text-slate-500'} />
+                  <span>Email</span>
+                </button>
+
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  title="Multi-channel delivery will be enabled in the next version of LockReview"
+                  className="p-3 border font-bold flex items-center justify-between gap-2 uppercase tracking-wider transition-all border-slate-200 dark:border-[#262626] bg-slate-100/60 dark:bg-[#151515] text-slate-400 dark:text-neutral-500 opacity-50 cursor-not-allowed select-none"
+                >
+                  <div className="flex items-center gap-2">
+                    <MessageSquare size={15} className="text-slate-400 dark:text-neutral-500" />
+                    <span>Both</span>
+                  </div>
+                  <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-slate-200/70 dark:bg-[#262626] text-slate-500 dark:text-neutral-400">
+                    v2
+                  </span>
+                </button>
               </div>
             </div>
 
