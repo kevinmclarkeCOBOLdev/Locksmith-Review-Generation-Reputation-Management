@@ -112,12 +112,17 @@ export async function POST(req: Request) {
       },
     });
 
+    const host = req.headers.get('host') || '';
+    const isAtypikalDomain = host.includes('atypikalstudio.dev');
+    const cookieDomain = process.env.COOKIE_DOMAIN || (isAtypikalDomain ? '.atypikalstudio.dev' : undefined);
+
     response.cookies.set('session', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: isAtypikalDomain,
       sameSite: 'lax',
       maxAge: 24 * 60 * 60, // 24 hours
       path: '/',
+      ...(cookieDomain ? { domain: cookieDomain } : {}),
     });
 
     return response;

@@ -381,12 +381,12 @@ export function DocumentationView() {
               Terms of Use
             </Link>
             <Link
-              href="https://lockquote.atypikalstudio.dev"
+              href="https://lockquote.atypikalstudio.dev/dashboard/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[#00d492] transition-colors"
             >
-              Open LockQuote
+              Open LockQuote Dashboard
             </Link>
           </div>
         </div>

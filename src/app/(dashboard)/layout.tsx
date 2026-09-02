@@ -91,7 +91,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-[#1c1c1c] text-slate-900 dark:text-neutral-100 font-sans transition-colors duration-200">
       {/* Sidebar */}
-      <aside className="w-64 border-r border-slate-200 dark:border-[#333333] bg-white dark:bg-[#161616] flex flex-col justify-between shrink-0 hidden md:flex h-screen overflow-y-auto">
+      <aside className="w-[20.06rem] border-r border-slate-200 dark:border-[#333333] bg-white dark:bg-[#161616] flex flex-col justify-between shrink-0 hidden md:flex h-screen overflow-y-auto">
         <div className="p-6 space-y-6">
           {/* Logo & Ecosystem Badge */}
           <div className="flex items-center gap-3">
@@ -173,12 +173,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </span>
             </div>
             <SidebarLink
-              href="https://lockquote.atypikalstudio.dev"
+              href="https://lockquote.atypikalstudio.dev/dashboard/"
               icon={<ExternalLink size={18} />}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open LockQuote
+              Open LockQuote Dashboard
             </SidebarLink>
           </nav>
         </div>
@@ -187,7 +187,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="p-5 border-t border-slate-200 dark:border-[#333333] bg-slate-50 dark:bg-[#121212] space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-500 dark:text-neutral-400">Appearance</span>
-            <ThemeToggle />
+            <ThemeToggle iconOnly />
           </div>
 
           <div className="flex items-center justify-between gap-3 pt-2 border-t border-slate-200 dark:border-[#262626]">
@@ -237,7 +237,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <h1 className="font-extrabold text-sm text-slate-900 dark:text-white">LockReview</h1>
           </div>
           <div className="flex items-center gap-3">
-            <ThemeToggle />
+            <ThemeToggle iconOnly />
             <button
               onClick={handleLogout}
               className="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline cursor-pointer"

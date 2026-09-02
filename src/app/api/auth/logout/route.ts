@@ -33,12 +33,17 @@ export async function POST(req: Request) {
       message: 'Signed out successfully',
     });
 
+    const host = req.headers.get('host') || '';
+    const isAtypikalDomain = host.includes('atypikalstudio.dev');
+    const cookieDomain = process.env.COOKIE_DOMAIN || (isAtypikalDomain ? '.atypikalstudio.dev' : undefined);
+
     response.cookies.set('session', '', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: isAtypikalDomain,
       sameSite: 'lax',
       maxAge: 0,
       path: '/',
+      ...(cookieDomain ? { domain: cookieDomain } : {}),
     });
 
     return response;

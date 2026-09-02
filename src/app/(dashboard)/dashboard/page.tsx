@@ -32,15 +32,9 @@ export default async function DashboardOverviewPage() {
       {/* 1. Header & Actions */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 dark:border-[#2a2a2a] pb-6">
         <div>
-          <div className="flex items-center gap-3">
-            <h1 className="text-2xl md:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
-              Reputation Overview
-            </h1>
-            <Badge variant="outline" className="hidden sm:inline-flex items-center gap-1.5 py-0.5 text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              MySQL Live
-            </Badge>
-          </div>
+          <h1 className="text-2xl md:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
+            Reputation Overview
+          </h1>
           <p className="text-sm text-slate-600 dark:text-neutral-400 mt-1">
             Real-time review generation, response rates, and Google Reviews conversion metrics for{' '}
             <strong className="text-slate-800 dark:text-neutral-200">{context.tenant.name}</strong>.
