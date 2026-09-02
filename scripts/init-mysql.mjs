@@ -221,7 +221,7 @@ async function initLockReviewMySQL() {
         \`lead_id\` VARCHAR(36) NOT NULL,
         \`quote_id\` VARCHAR(36) NULL,
         \`status\` VARCHAR(50) NOT NULL DEFAULT 'pending',
-        \`channel\` VARCHAR(20) NOT NULL DEFAULT 'sms',
+        \`channel\` VARCHAR(20) NOT NULL DEFAULT 'email',
         \`secure_token\` VARCHAR(64) NOT NULL,
         \`token_hash\` VARCHAR(64) NULL,
         \`rating\` TINYINT NULL,
@@ -399,10 +399,10 @@ async function initLockReviewMySQL() {
       INSERT INTO \`review_requests\` 
         (\`id\`, \`tenant_id\`, \`lead_id\`, \`status\`, \`channel\`, \`secure_token\`, \`rating\`, \`sent_at\`, \`responded_at\`, \`expires_at\`)
       VALUES 
-        ('req-demo-001', ?, 'lead-001', 'positive', 'sms', 'tok_demo_positive_12345', 5, DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_ADD(NOW(), INTERVAL 5 DAY)),
+        ('req-demo-001', ?, 'lead-001', 'positive', 'email', 'tok_demo_positive_12345', 5, DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_SUB(NOW(), INTERVAL 2 DAY), DATE_ADD(NOW(), INTERVAL 5 DAY)),
         ('req-demo-002', ?, 'lead-002', 'negative', 'email', 'tok_demo_negative_67890', 2, DATE_SUB(NOW(), INTERVAL 1 DAY), DATE_SUB(NOW(), INTERVAL 1 DAY), DATE_ADD(NOW(), INTERVAL 6 DAY)),
-        ('req-demo-003', ?, 'lead-003', 'sent', 'sms', 'tok_demo_pending_11223', NULL, NOW(), NULL, DATE_ADD(NOW(), INTERVAL 7 DAY))
-      ON DUPLICATE KEY UPDATE \`status\` = VALUES(\`status\`);
+        ('req-demo-003', ?, 'lead-003', 'sent', 'email', 'tok_demo_pending_11223', NULL, NOW(), NULL, DATE_ADD(NOW(), INTERVAL 7 DAY))
+      ON DUPLICATE KEY UPDATE \`status\` = VALUES(\`status\`), \`channel\` = VALUES(\`channel\`);
     `, [defaultTenantId, defaultTenantId, defaultTenantId]);
 
     // Positive 5-star Google review click

@@ -313,7 +313,7 @@ export const reviewRequests = mysqlTable(
     quoteId: varchar('quote_id', { length: 36 })
       .references(() => quotes.id, { onDelete: 'set null' }),
     status: varchar('status', { length: 50 }).default('pending').notNull(), // pending, scheduled, sent, delivered, responded, positive, negative, failed, cancelled, expired
-    channel: varchar('channel', { length: 20 }).default('sms').notNull(), // sms, email, both
+    channel: varchar('channel', { length: 20 }).default('email').notNull(), // sms, email, both
     secureToken: varchar('secure_token', { length: 64 }).notNull(), // Cryptographically random public URL token
     tokenHash: varchar('token_hash', { length: 64 }), // Optional SHA-256 hash for extra security
     rating: tinyint('rating'), // 1-5 rating when responded

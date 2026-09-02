@@ -45,7 +45,7 @@ export function ReviewRequestsManager({
   // Filters
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
-  const [channelFilter, setChannelFilter] = useState<string>('all');
+  const [channelFilter] = useState<string>('email');
 
   // Modals & Actions
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -112,13 +112,6 @@ export function ReviewRequestsManager({
     setStatusFilter(val);
     setPage(1);
     fetchRequests(1, search, val, channelFilter);
-  };
-
-  const handleChannelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const val = e.target.value;
-    setChannelFilter(val);
-    setPage(1);
-    fetchRequests(1, search, statusFilter, val);
   };
 
   const handlePageChange = (newPage: number) => {
@@ -197,7 +190,7 @@ export function ReviewRequestsManager({
             Review Requests
           </h1>
           <p className="text-xs text-slate-500 dark:text-neutral-400 mt-1">
-            Manage, dispatch and track SMS & Email review requests for <strong>{tenantName}</strong>.
+            Manage, dispatch and track review requests for <strong>{tenantName}</strong>.
           </p>
         </div>
 
@@ -245,18 +238,16 @@ export function ReviewRequestsManager({
           </select>
         </div>
 
-        {/* Channel Filter */}
+        {/* Channel Filter (Email only - locked for v1) */}
         <div className="md:col-span-3 flex items-center gap-2">
           <select
             value={channelFilter}
-            onChange={handleChannelChange}
+            disabled
             aria-label="Filter by channel"
-            className="w-full px-3 py-2 bg-white dark:bg-[#1a1a1a] border border-slate-200 dark:border-[#333333] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#00d492]"
+            title="Email is the only active delivery channel in version 1.0 (SMS and multi-channel delivery will be enabled in v2)"
+            className="w-full px-3 py-2 bg-slate-100 dark:bg-[#181818] border border-slate-200 dark:border-[#333333] text-xs text-slate-500 dark:text-neutral-400 cursor-not-allowed opacity-75 focus:outline-none"
           >
-            <option value="all">All Channels</option>
-            <option value="sms">SMS Only</option>
-            <option value="email">Email Only</option>
-            <option value="both">Both (SMS + Email)</option>
+            <option value="email">Email only</option>
           </select>
 
           <Button
@@ -301,7 +292,7 @@ export function ReviewRequestsManager({
                     <Inbox size={32} className="mx-auto text-slate-400 mb-2 opacity-60" />
                     <p className="font-bold text-slate-700 dark:text-neutral-300">No review requests found</p>
                     <p className="text-slate-500 dark:text-neutral-400 text-xs mt-1">
-                      {search || statusFilter !== 'all' || channelFilter !== 'all'
+                      {search || statusFilter !== 'all'
                         ? 'Try adjusting your search query or filters.'
                         : 'Create your first review request to start gathering positive customer feedback.'}
                     </p>
