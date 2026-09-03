@@ -1,6 +1,6 @@
 # Agent Settings
 
-* Model: Gemini 3.7 Flash
+* Model: Gemini 3.8 Flash
 * Thinking Level: HIGH
 
 # Workspace Metadata
